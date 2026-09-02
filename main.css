@@ -1,0 +1,31 @@
+body {
+  width: 100%;
+  font-family: "helvetica", sans-serif;
+}
+
+h1 {
+  color: #333;
+}
+
+.chat-grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-row: auto auto auto auto;
+  height: auto;
+  gap: 10px;
+  width: 100%;
+}
+
+.question {
+  grid-column-start: 1;
+  grid-row-start: 1;
+  background-color: #f0f0f0;
+  padding: 10px;
+}
+
+.answer {
+  grid-column-start: 2;
+  grid-row-start: 2;
+  background-color: #e0e0e0;
+  padding: 10px;
+}
