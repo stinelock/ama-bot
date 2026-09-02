@@ -2,17 +2,66 @@
   box-sizing: border-box;
 }
 
+:root {
+  --primary-color: #f0f0f0;
+  --secondary-color: #333;
+  --light-accent-color: #dfdfdf;
+  --dark-accent-color: #d0d0d0;
+  --cta-color: #ff6600;
+}
+
 body {
   width: 100%;
   height: 100%;
   font-family: "helvetica", sans-serif;
   margin: 0;
-  padding: 0;
-  background-color: #f9f9f9;
+  background-color: var(--primary-color);
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 50px;
+  background-color: #333;
 }
 
 h1 {
+  margin: 0;
   color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input {
+  border-color: none;
+  width: 80%;
+}
+
+button {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.chat-section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .chat-grid {
@@ -28,13 +77,13 @@ h1 {
 .question {
   grid-column: 1 / 2 span;
   grid-row-start: 1;
-  background-color: #f0f0f0;
+  background-color: var(--light-accent-color);
   padding: 10px;
 }
 
 .answer {
   grid-column: 2 / 2 span;
   grid-row-start: 2;
-  background-color: #e0e0e0;
+  background-color: var(--dark-accent-color);
   padding: 10px;
 }
