@@ -59,8 +59,8 @@ button {
   cursor: pointer;
 }
 
-.text-light{
-    color: var(--primary-color);
+.text-light {
+  color: var(--primary-color);
 }
 
 .chat-section {
@@ -86,6 +86,8 @@ button {
   grid-row-start: 1;
   background-color: var(--light-accent-color);
   padding: 10px;
+  width: 100%;
+  height: auto;
 }
 
 .answer {
@@ -93,4 +95,6 @@ button {
   grid-row-start: 2;
   background-color: var(--dark-accent-color);
   padding: 10px;
+  width: 100%;
+  height: auto;
 }
