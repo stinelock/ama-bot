@@ -27,7 +27,7 @@ const answers = [
     answer: "Jeg bor i Aarhus.",
   },
   {
-    keywords: ["hobby", "fritid", "kan lide"],
+    keywords: ["hobby", "hobbyer", "fritid", "kan lide"],
     answer:
       "I min fritid kan jeg godt lide at tegne, strikke, gå til gymnastik og være sammen med min venner.",
   },
@@ -53,20 +53,26 @@ function findAnswer(question) {
   return "Jeg er ikke sikker på, hvad du mener. Kan du uddybe?";
 }
 
-
 //----------------------ROUTES----------------------//
 
 app.get("/", (req, res) => {
-  res.render("index", { messages });
+  res.render("index", { messages, error: "" });
 });
 
 app.post("/ask", (req, res) => {
-  const question = req.body.question;
+  const question = req.body.question.trim();
 
-  messages.push({ type: "question", text: question });
-  messages.push({ type: "answer", text: "Jeg leder efter et svar ..." });
+  let error = "";
 
-  res.render("index", { messages });
+  if (!question) {
+    error = "Skriv et spørgsmål før du trykker på send.";
+  } else {
+    messages.push({ type: "question", text: question });
+    const answer = findAnswer(question);
+    messages.push({ type: "answer", text: answer });
+  }
+
+  res.render("index", { messages, error });
 });
 
 //----------------------OPSTART AF SERVER----------------------//
