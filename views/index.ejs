@@ -21,26 +21,30 @@
       </section>
       <section class="chat-section">
         <article class="chat-grid">
-          <article class="question"><p>Spørgsmål</p></article>
-          <article class="answer"><p>Svar</p></article>
-        </article>
-        <article class="chat-grid">
-          <article class="question"><p>Spørgsmål</p></article>
-          <article class="answer"><p>Svar</p></article>
+          <% for (const message of messages) { %>
+          <article class="<%= message.type %>">
+            <p><%= message.text %></p>
+          </article>
+          <% } %>
+           <% for (const message of messages) { %>
+          <article class="<%= message.type %>">
+            <p><%= message.text %></p>
+          </article>
+          <% } %>
         </article>
       </section>
       <section class="form-section">
-        <form>
+        <form method="POST" action="/ask">
           <label for="question" aria-label="Enter your question here"
             >Stil dit spørgsmål her:</label
           >
           <div class="flex-column">
-            <input
-              type="textarea"
+            <textarea
               name="question"
+              id="question"
               placeholder="Hvad vil du gerne vide?"
-            />
-            <button><span>-></span></button>
+            ></textarea>
+            <button type="submit"><span>-></span></button>
           </div>
         </form>
       </section>
