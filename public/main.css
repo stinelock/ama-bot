@@ -36,6 +36,12 @@ h1 {
   color: #333;
 }
 
+p {
+  margin-block-end: 0;
+  margin-block-start: 0;
+  color: #333;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -68,7 +74,7 @@ button {
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
 }
 
@@ -79,7 +85,7 @@ button {
   height: auto;
   gap: 20px;
   width: 100%;
-  margin: 50px auto;
+  margin-bottom: 20px;
 }
 
 .question {
