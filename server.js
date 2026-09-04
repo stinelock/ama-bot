@@ -53,6 +53,10 @@ function findAnswer(question) {
   return "Jeg er ikke sikker på, hvad du mener. Kan du uddybe?";
 }
 
+function sanitizeQuestion(input){
+     return input.replace(/[\u0000-\u001F\u007F]/g, ""); //Fjerner kontroltegn og usynlige tegn fra inputtet
+}
+
 //----------------------ROUTES----------------------//
 
 app.get("/", (req, res) => {
@@ -60,7 +64,8 @@ app.get("/", (req, res) => {
 });
 
 app.post("/ask", (req, res) => {
-  const question = req.body.question.trim();
+  const rawQuestion = req.body.question;
+  const question = sanitizeQuestion(rawQuestion).trim();
 
   let error = "";
 
