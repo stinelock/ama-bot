@@ -78,7 +78,7 @@ app.post("/ask", (req, res) => {
   }
 
 
-  res.render("index", { messages:messages.slice(-8), error });
+  res.render("index", { messages:messages.slice(-6), error });
 });
 
 //----------------------OPSTART AF SERVER----------------------//
