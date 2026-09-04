@@ -53,8 +53,8 @@ function findAnswer(question) {
   return "Jeg er ikke sikker på, hvad du mener. Kan du uddybe?";
 }
 
-function sanitizeQuestion(input){
-     return input.replace(/[\u0000-\u001F\u007F]/g, ""); //Fjerner kontroltegn og usynlige tegn fra inputtet
+function sanitizeQuestion(input) {
+  return input.replace(/[\u0000-\u001F\u007F]/g, ""); //Fjerner kontroltegn og usynlige tegn fra inputtet
 }
 
 //----------------------ROUTES----------------------//
@@ -77,7 +77,8 @@ app.post("/ask", (req, res) => {
     messages.push({ type: "answer", text: answer });
   }
 
-  res.render("index", { messages, error });
+
+  res.render("index", { messages:messages.slice(-8), error });
 });
 
 //----------------------OPSTART AF SERVER----------------------//
