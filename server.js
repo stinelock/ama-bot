@@ -23,7 +23,7 @@ const answers = [
     answer: "Jeg er 26 år gammel.",
   },
   {
-    keywords: ["bor", "by", "hvem er du"],
+    keywords: ["bor", "by", "lever", "hvor"],
     answer: "Jeg bor i Aarhus.",
   },
   {
@@ -36,6 +36,15 @@ const answers = [
     answer: "I min fritid går jeg til gymnastik.",
   },
 ];
+
+//------------------------------- FUNKTIONER--------------------------
+function countMatches(keywords, normalizedQuestion) {
+  const matches = keywords.filter((keyword) =>
+    normalizedQuestion.includes(keyword)
+  );
+  return matches.length;
+  
+}
 
 function findAnswer(question) {
   const normalizedQuestion = question.toLowerCase();
@@ -53,8 +62,26 @@ function findAnswer(question) {
   return "Jeg er ikke sikker på, hvad du mener. Kan du uddybe?";
 }
 
-function sanitizeQuestion(input){
-     return input.replace(/[\u0000-\u001F\u007F]/g, ""); //Fjerner kontroltegn og usynlige tegn fra inputtet
+function findBestAnswer(question) {
+  const normalizedQuestion = question.toLowerCase();
+
+  let bestScore = 0;
+  let bestAnswer = "Jeg er ikke sikker på, hvad du mener. Kan du uddybe?";
+
+  for (const answerGroup of answers){
+    const score = countMatches(answerGroup.keywords, normalizedQuestion);
+
+    if (score > bestScore) {
+      bestScore = score;
+      bestAnswer = answerGroup.answer;
+    }
+  }
+
+  return bestAnswer;
+}
+
+function sanitizeQuestion(input) {
+  return input.replace(/[\u0000-\u001F\u007F]/g, ""); //Fjerner kontroltegn og usynlige tegn fra inputtet
 }
 
 //----------------------ROUTES----------------------//
@@ -73,7 +100,7 @@ app.post("/ask", (req, res) => {
     error = "Skriv et spørgsmål før du trykker på send.";
   } else {
     messages.push({ type: "question", text: question });
-    const answer = findAnswer(question);
+    const answer = findBestAnswer(question);
     messages.push({ type: "answer", text: answer });
   }
 
