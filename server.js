@@ -32,7 +32,7 @@ const answers = [
       "I min fritid kan jeg godt lide at tegne, strikke, gå til gymnastik og være sammen med min venner.",
   },
   {
-    keywords: ["gå til", "går til", "sport", "hobby"],
+    keywords: ["gå til", "går du til", "sport", "hobby"],
     answer: "I min fritid går jeg til gymnastik.",
   },
 ];
@@ -41,9 +41,10 @@ function findAnswer(question) {
   const normalizedQuestion = question.toLowerCase();
 
   for (const answerGroup of answers) {
-    const hasMatch = answerGroup.keywords.some((keyword) =>
-      normalizedQuestion.includes(keyword)
-    );
+    const hasMatch = answerGroup.keywords.some((keyword) =>{
+      const regex = new RegExp(`\\b${keyword}\\b`, "i"); // Opretter et regex mønster for at matche hele ord
+      return regex.test(normalizedQuestion); // Tjekker om spørgsmålet matcher nogen af nøgleordene
+    });
 
     if (hasMatch) {
       return answerGroup.answer;
@@ -78,7 +79,7 @@ app.post("/ask", (req, res) => {
   }
 
 
-  res.render("index", { messages:messages.slice(-6), error });
+  res.render("index", { messages:messages.slice(-4), error });
 });
 
 //----------------------OPSTART AF SERVER----------------------//

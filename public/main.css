@@ -109,7 +109,7 @@ form button {
 .question {
   grid-column: 3 / 3 span;
   background-color: var(--dark-accent-color);
-  padding: 0 15px;
+  padding: 0 20px;
   width: 100%;
   height: auto;
   border-radius: var(--border-radius);
@@ -118,7 +118,7 @@ form button {
 .answer {
   grid-column: 1 / 3 span;
   background-color: var(--light-accent-color);
-  padding: 0 15px;
+  padding: 0 20px;
   width: auto;
   height: auto;
   border-radius: var(--border-radius);
