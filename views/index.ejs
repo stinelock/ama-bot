@@ -58,6 +58,15 @@
             <% } %>
           </section>
         </section>
+        <section class="stats-section">
+          <h2>Statistik</h2>
+          <p>Antal spørgsmål stillet:</p>
+          <ul>
+            <% for (const [key, value] of Object.entries(topicStats)) { %>
+            <li><%= key %>: <%= value %></li>
+            <% } %>
+          </ul>
+        </section>
       </div>
     </main>
   </body>
