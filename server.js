@@ -107,6 +107,8 @@ app.post("/ask", (req, res) => {
     messages.push({ type: "answer", text: result.answer });
   }
 
+
+  res.render("index", { messages:messages.slice(-4), error });
   res.render("index", { messages, error, topicStats });
 });
 
