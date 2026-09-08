@@ -37,7 +37,7 @@ const answers = [
   },
   {
     category: "sport",
-    keywords: ["gå til", "går til", "sport", "hobby"],
+    keywords: ["går", "gå til", "går du til", "sport", "hobby"],
     answer: "I min fritid går jeg til gymnastik.",
   },
 ];
