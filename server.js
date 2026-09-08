@@ -107,9 +107,7 @@ app.post("/ask", (req, res) => {
     messages.push({ type: "answer", text: result.answer });
   }
 
-
-  res.render("index", { messages:messages.slice(-4), error });
-  res.render("index", { messages, error, topicStats });
+  res.render("index", { messages: messages.slice(-4), error, topicStats });
 });
 
 //----------------------OPSTART AF SERVER----------------------//
