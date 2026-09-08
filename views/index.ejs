@@ -16,43 +16,49 @@
       <h1 class="text-light">AMAbot</h1>
     </header>
     <main>
-      <% if (!messages || messages.length === 0) { %>
-      <section class="intro-section">
-        <h1>Spørg mig om alt</h1>
-        <p>
-          Her kan du lære mere om mig. Bare stil et spørgsmål og så svarer jeg
-          så godt jeg kan!
-        </p>
-      </section>
-      <% } %>
-      <section class="chat-section">
-        <% for (const message of messages) { %>
-        <article class="chat-grid">
-          <article class="<%= message.type %>">
-            <p><%= message.text %></p>
-          </article>
-        </article>
-        <% } %>
-      </section>
-      <section class="form-section">
-        <form method="POST" action="/ask">
-          <label for="question" aria-label="Enter your question here"
-            >Stil dit spørgsmål her:</label
-          >
-          <div class="flex-row">
-            <input
-              type="text"
-              name="question"
-              id="question"
-              placeholder="Hvad vil du gerne vide?"
-            />
-            <button type="submit"><img src="/images/send-btn.svg" /></button>
-          </div>
-        </form>
-        <% if (error) { %>
-        <p role="alert"><%= error %></p>
-        <% } %>
-      </section>
+      <div class="main-grid">
+        <section class="main-section">
+          <% if (!messages || messages.length === 0) { %>
+          <section>
+            <h1>Spørg mig om alt</h1>
+            <p>
+              Her kan du lære mere om mig. Bare stil et spørgsmål og så svarer
+              jeg så godt jeg kan!
+            </p>
+          </section>
+          <% } %>
+          <section class="chat-section">
+            <% for (const message of messages) { %>
+            <article class="chat-grid">
+              <article class="<%= message.type %>">
+                <p><%= message.text %></p>
+              </article>
+            </article>
+            <% } %>
+          </section>
+          <section class="form-section">
+            <form method="POST" action="/ask">
+              <label for="question" aria-label="Enter your question here"
+                >Stil dit spørgsmål her:</label
+              >
+              <div class="flex-row">
+                <input
+                  type="text"
+                  name="question"
+                  id="question"
+                  placeholder="Hvad vil du gerne vide?"
+                />
+                <button type="submit">
+                  <img src="/images/send-btn.svg" />
+                </button>
+              </div>
+            </form>
+            <% if (error) { %>
+            <p role="alert"><%= error %></p>
+            <% } %>
+          </section>
+        </section>
+      </div>
     </main>
   </body>
 </html>
