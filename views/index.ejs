@@ -27,6 +27,8 @@
             </p>
           </section>
           <% } %>
+
+          <% if (messages && messages.length > 0) { %>
           <section class="chat-section">
             <% for (const message of messages) { %>
             <article class="chat-grid">
@@ -36,6 +38,7 @@
             </article>
             <% } %>
           </section>
+          <% } %>
           <section class="form-section">
             <form method="POST" action="/ask">
               <label for="question" aria-label="Enter your question here"
