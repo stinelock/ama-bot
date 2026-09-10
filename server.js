@@ -26,8 +26,8 @@ const answers = [
   },
   {
     category: "bosted",
-    keywords: ["bor", "by", "lever", "hvor"],
-    answer: "Jeg bor i Aarhus.",
+    keywords: ["bor", "by", "lever", "hvor bor", "hvor lever"],
+    answer: "Jeg bor på Frederiksbjerg i Aarhus.",
   },
   {
     category: "hobbyer",
