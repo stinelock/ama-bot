@@ -17,7 +17,7 @@ const answers = [
   {
     category: "navn",
     keywords: ["navn", "hedder", "hvem er du"],
-    answer: "Jeg hedder Stine. Hvad vil du ellers vide om mig?",
+    answer: "Jeg hedder Stine.",
   },
   {
     category: "alder",

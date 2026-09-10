@@ -34,7 +34,6 @@ main {
 
 header {
   text-align: center;
-  margin-bottom: 50px;
   background-color: var(--secondary-color);
   padding: 20px;
 }
