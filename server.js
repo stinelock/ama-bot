@@ -63,7 +63,7 @@ async function saveMessages(messages) {
 
 function countMatches(keywords, normalizedQuestion) {
   const matches = keywords.filter((keyword) =>
-    normalizedQuestion.includes(keyword)
+    normalizedQuestion.includes(keyword),
   );
   return matches.length;
 }
@@ -122,7 +122,14 @@ app.post("/ask", async (req, res) => {
   if (!question) {
     error = "Skriv et spørgsmål før du trykker på send.";
   } else {
-    messages.push({ type: "question", text: question });
+    messages.push({
+      type: "question",
+      text: question,
+      createdAt: new Date().toLocaleString("da-DK", {
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
+    });
     const result = findBestAnswer(question);
 
     if (result.category) {
@@ -135,7 +142,11 @@ app.post("/ask", async (req, res) => {
       }
     }
 
-    messages.push({ type: "answer", text: result.answer });
+    messages.push({
+      type: "answer",
+      text: result.answer,
+      createdAt: new Date().toLocaleString("da-DK", { hour: '2-digit', minute: '2-digit' })
+    });
   }
 
   await saveMessages(messages);
@@ -144,13 +155,12 @@ app.post("/ask", async (req, res) => {
 });
 
 app.post("/reset", async (req, res) => {
-  const messages = loadMessages();
-  const resetMessages = []; 
+  const resetMessages = [];
 
- await saveMessages(resetMessages)
+  await saveMessages(resetMessages);
 
- res.redirect("/");
-})
+  res.redirect("/");
+});
 
 //----------------------OPSTART AF SERVER----------------------//
 

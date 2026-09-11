@@ -151,6 +151,7 @@ form button {
 .chat-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr 1fr;
   height: auto;
   margin-bottom: 20px;
   width: 100%;
@@ -172,6 +173,18 @@ form button {
   width: auto;
   height: auto;
   border-radius: var(--answer-border-radius);
+}
+
+.timestamp{
+  font-size: 0.8rem;
+  color: var(--secondary-color);
+  margin-top: 5px;
+  grid-row: 2 / 2 span;
+}
+
+.timestamp, .question{
+  grid-column: 3 / 3 span;
+  align-self: flex-end;
 }
 
 /*-------------------------STATS SECTION----------------------------*/
