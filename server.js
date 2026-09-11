@@ -1,4 +1,5 @@
 import express from "express";
+import fs from "node:fs/promises";
 
 const app = express();
 const port = 8000;
@@ -10,9 +11,6 @@ app.use(express.urlencoded({ extended: true })); // Giver express adgang til at 
 app.set("view engine", "ejs");
 
 //---------------------SAMTALELOGIK---------------------//
-
-const messages = [];
-
 const answers = [
   {
     category: "navn",
@@ -51,6 +49,18 @@ const topicStats = {
 };
 
 //------------------------------- FUNKTIONER--------------------------
+async function loadMessages() {
+  const data = await fs.readFile("./data/messages.json", "utf-8");
+  const messages = JSON.parse(data);
+
+  return messages;
+}
+
+async function saveMessages(messages) {
+  const json = JSON.stringify(messages, null, 2);
+  await fs.writeFile("./data/messages.json", json);
+}
+
 function countMatches(keywords, normalizedQuestion) {
   const matches = keywords.filter((keyword) =>
     normalizedQuestion.includes(keyword)
@@ -84,11 +94,14 @@ function sanitizeQuestion(input) {
 
 //----------------------ROUTES----------------------//
 
-app.get("/", (req, res) => {
-  res.render("index", { messages, error: "", topicStats });
+app.get("/", async (req, res) => {
+  const messages = await loadMessages();
+  res.render("index", { messages: messages.slice(-4), error: "", topicStats });
 });
 
-app.post("/ask", (req, res) => {
+app.post("/ask", async (req, res) => {
+  const messages = await loadMessages();
+
   const rawQuestion = req.body.question;
   const question = sanitizeQuestion(rawQuestion).trim();
 
@@ -100,12 +113,14 @@ app.post("/ask", (req, res) => {
     messages.push({ type: "question", text: question });
     const result = findBestAnswer(question);
 
-  if (result.category) {
-    topicStats[result.category] += 1; //tilføjer 1 point til den kategori der matcher spørgsmålet
-  }
-    
+    if (result.category) {
+      topicStats[result.category] += 1; //tilføjer 1 point til den kategori der matcher spørgsmålet
+    }
+
     messages.push({ type: "answer", text: result.answer });
   }
+
+  await saveMessages(messages);
 
   res.render("index", { messages: messages.slice(-4), error, topicStats });
 });
