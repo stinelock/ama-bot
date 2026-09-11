@@ -147,9 +147,9 @@ app.post("/reset", async (req, res) => {
   const messages = loadMessages();
   const resetMessages = []; 
 
-  messages = resetMessages;
-
  await saveMessages(resetMessages)
+
+ res.redirect("/");
 })
 
 //----------------------OPSTART AF SERVER----------------------//
