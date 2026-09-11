@@ -143,6 +143,10 @@ app.post("/ask", async (req, res) => {
   res.render("index", { messages: messages.slice(-4), error, topicStats });
 });
 
+app.post("/reset", async (req, res) => {
+  const messages = [];
+})
+
 //----------------------OPSTART AF SERVER----------------------//
 
 app.listen(port, () => {
