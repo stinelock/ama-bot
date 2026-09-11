@@ -55,7 +55,6 @@
                 <button type="submit">
                   <img src="/images/send-btn.svg" />
                 </button>
-                <button type="reset">Reset chat</button>
               </div>
             </form>
             <% if (error) { %>
@@ -72,6 +71,9 @@
             <% } %>
           </ul>
         </section>
+         <form method="POST" action="/reset">
+          <button type="submit">Reset chat</button>
+        </form>
       </div>
     </main>
   </body>
