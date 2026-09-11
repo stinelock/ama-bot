@@ -96,7 +96,7 @@ function sanitizeQuestion(input) {
 
 app.get("/", async (req, res) => {
   const messages = await loadMessages();
-  res.render("index", { messages, error: "", topicStats });
+  res.render("index", { messages: messages.slice(-4), error: "", topicStats });
 });
 
 app.post("/ask", async (req, res) => {
