@@ -61,6 +61,8 @@ async function saveMessages(messages) {
   await fs.writeFile("./data/messages.json", json);
 }
 
+
+
 function countMatches(keywords, normalizedQuestion) {
   const matches = keywords.filter((keyword) =>
     normalizedQuestion.includes(keyword),
@@ -111,6 +113,7 @@ app.get("/", async (req, res) => {
   res.render("index", { messages: messages.slice(-4), error: "", topicStats });
 });
 
+
 app.post("/ask", async (req, res) => {
   const messages = await loadMessages();
 
@@ -130,6 +133,7 @@ app.post("/ask", async (req, res) => {
         minute: "2-digit",
       }),
     });
+
     const result = findBestAnswer(question);
 
     if (result.category) {
@@ -148,11 +152,14 @@ app.post("/ask", async (req, res) => {
       createdAt: new Date().toLocaleString("da-DK", { hour: '2-digit', minute: '2-digit' })
     });
   }
-
   await saveMessages(messages);
 
   res.render("index", { messages: messages.slice(-4), error, topicStats });
 });
+
+
+
+
 
 app.post("/reset", async (req, res) => {
   const resetMessages = [];
