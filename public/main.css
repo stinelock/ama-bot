@@ -15,7 +15,9 @@
   --answer-border-radius: 50px 50px 50px 10px;
 
   font-family: "graveur-variable", sans-serif;
-  font-variation-settings: "opsz" 10, "wght" 400;
+  font-variation-settings:
+    "opsz" 10,
+    "wght" 400;
 }
 
 body {
@@ -43,10 +45,10 @@ h1 {
   color: var(--secondary-color);
 }
 
-h2{
+h2 {
   margin: 0;
   color: var(--secondary-color);
-  font-family: 'poppins', sans-serif;
+  font-family: "poppins", sans-serif;
   font-weight: normal;
 }
 
@@ -148,30 +150,39 @@ form button {
   justify-content: flex-end;
 }
 
-.chat-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+.chat-box {
+  display: flex;
+  flex-direction: column;
   height: auto;
   margin-bottom: 20px;
   width: 100%;
 }
 
+.chat-box:nth-child(odd) {
+  align-items: flex-end;
+}
+
 .question {
-  grid-column: 3 / 3 span;
   background-color: var(--dark-accent-color);
   padding: 0 20px;
-  width: 100%;
+  width: fit-content;
   height: auto;
   border-radius: var(--question-border-radius);
 }
 
 .answer {
-  grid-column: 1 / 3 span;
+  align-self: flex-start;
   background-color: var(--light-accent-color);
   padding: 0 20px;
   width: auto;
   height: auto;
   border-radius: var(--answer-border-radius);
+}
+
+.timestamp {
+  font-size: 0.8rem;
+  color: var(--secondary-color);
+  margin-top: 5px;
 }
 
 /*-------------------------STATS SECTION----------------------------*/
