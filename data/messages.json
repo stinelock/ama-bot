@@ -1,0 +1,42 @@
+[
+  {
+    "type": "question",
+    "text": "Hvad hedder du?"
+  },
+  {
+    "type": "answer",
+    "text": "Jeg hedder Stine."
+  },
+  {
+    "type": "question",
+    "text": "Hvor gammel er du?"
+  },
+  {
+    "type": "answer",
+    "text": "Jeg er 26 år gammel."
+  },
+  {
+    "type": "question",
+    "text": "Hvad er din alder?"
+  },
+  {
+    "type": "answer",
+    "text": "Jeg er 26 år gammel."
+  },
+  {
+    "type": "question",
+    "text": "Hvor bor du?"
+  },
+  {
+    "type": "answer",
+    "text": "Jeg bor på Frederiksbjerg i Aarhus."
+  },
+  {
+    "type": "question",
+    "text": "Hvad er din alder?"
+  },
+  {
+    "type": "answer",
+    "text": "Jeg er 26 år gammel."
+  }
+]
