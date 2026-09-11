@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "type": "question",
+    "text": "Hvad hedder du?"
+  },
+  {
+    "type": "answer",
+    "text": "Jeg hedder Stine."
+  },
+  {
+    "type": "question",
+    "text": "Hvor gammel er du?"
+  },
+  {
+    "type": "answer",
+    "text": "Jeg er 26 år gammel."
+  }
+]

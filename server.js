@@ -52,6 +52,8 @@ const topicStats = {
 async function loadMessages() {
   const data = await fs.readFile("./data/messages.json", "utf-8");
   const messages = JSON.parse(data);
+
+  return messages;
 }
 
 async function saveMessages(messages) {
@@ -117,6 +119,8 @@ app.post("/ask", async (req, res) => {
 
     messages.push({ type: "answer", text: result.answer });
   }
+
+  await saveMessages(messages);
 
   res.render("index", { messages: messages.slice(-4), error, topicStats });
 });
