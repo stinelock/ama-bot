@@ -144,7 +144,12 @@ app.post("/ask", async (req, res) => {
 });
 
 app.post("/reset", async (req, res) => {
-  const messages = [];
+  const messages = loadMessages();
+  const resetMessages = []; 
+
+  messages = resetMessages;
+
+ await saveMessages(resetMessages)
 })
 
 //----------------------OPSTART AF SERVER----------------------//
