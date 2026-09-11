@@ -1,4 +1,5 @@
 import express from "express";
+import fs from "node:fs/promises"
 
 const app = express();
 const port = 8000;
@@ -51,6 +52,17 @@ const topicStats = {
 };
 
 //------------------------------- FUNKTIONER--------------------------
+async function loadMessages() {
+  const data = await fs.readFile("./data/messages.json", "utf-8");
+  const messages = JSON.parse(data);
+}
+
+async function saveMessages(messages) {
+const json = JSON.stringify(messages, null, 2);
+await fs.writeFile("./data/messages.json", json);
+}
+
+
 function countMatches(keywords, normalizedQuestion) {
   const matches = keywords.filter((keyword) =>
     normalizedQuestion.includes(keyword)
@@ -84,7 +96,8 @@ function sanitizeQuestion(input) {
 
 //----------------------ROUTES----------------------//
 
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
+  const messages = await loadMessages()
   res.render("index", { messages, error: "", topicStats });
 });
 
