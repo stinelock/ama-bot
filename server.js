@@ -24,7 +24,7 @@ const answers = [
   },
   {
     category: "bosted",
-    keywords: ["bor", "by", "lever", "hvor bor", "hvor lever"],
+    keywords: ["bor", "by", "lever"],
     answer: "Jeg bor på Frederiksbjerg i Aarhus.",
   },
   {
@@ -35,7 +35,7 @@ const answers = [
   },
   {
     category: "sport",
-    keywords: ["går", "gå til", "går du til", "sport", "hobby"],
+    keywords: ["går", "gå til", "går du til", "sport"],
     answer: "I min fritid går jeg til gymnastik.",
   },
 ];
@@ -78,12 +78,24 @@ function findBestAnswer(question) {
   for (const answerGroup of answers) {
     const score = countMatches(answerGroup.keywords, normalizedQuestion);
 
+    console.log(`Score for category "${answerGroup.category}": ${score}`);
+
+    if (score === bestScore && score > 0) {
+      if (typeof bestCategory === "string") {
+        bestCategory = [bestCategory];
+      }
+
+      bestAnswer += ` ${answerGroup.answer}`;
+      bestCategory.push(answerGroup.category);
+    }
     if (score > bestScore) {
       bestScore = score;
       bestAnswer = answerGroup.answer;
       bestCategory = answerGroup.category;
     }
   }
+
+  console.log(bestCategory);
 
   return { answer: bestAnswer, category: bestCategory };
 }
@@ -114,7 +126,13 @@ app.post("/ask", async (req, res) => {
     const result = findBestAnswer(question);
 
     if (result.category) {
-      topicStats[result.category] += 1; //tilføjer 1 point til den kategori der matcher spørgsmålet
+      if (Array.isArray(result.category)) {
+        result.category.forEach((category) => {
+          topicStats[category] += 1;
+        });
+      } else {
+        topicStats[result.category] += 1; //tilføjer 1 point til den kategori der matcher spørgsmålet
+      }
     }
 
     messages.push({ type: "answer", text: result.answer });
