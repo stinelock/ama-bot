@@ -53,6 +53,7 @@
                   name="question"
                   id="question"
                   placeholder="Hvad vil du gerne vide?"
+                  maxlength="20"
                 />
                 <button id="send-button" type="submit">
                   <img src="/images/send-btn.svg" />
@@ -62,9 +63,11 @@
             <% if (error) { %>
             <p role="alert"><%= error %></p>
             <% } %>
-                  <div>
- <span id="character-count">0</span><span>/20</span>
+        <div class="character-count-container">
+            <span id="character-count">0</span><span>/20</span>
         </div>
+        </section>  
+      
           </section>
         </section>
         <section class="stats-section">
