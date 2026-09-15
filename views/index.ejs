@@ -61,11 +61,9 @@
               </div>
             </form>
             <% if (error) { %>
-            <p role="alert"><%= error %></p>
+            <p role="alert" aria-live="polite" class="error"><%= error %></p>
             <% } %>
-        <div class="character-count-container">
             <span id="character-count">0</span><span>/20</span>
-        </div>
         </section>  
       
           </section>
