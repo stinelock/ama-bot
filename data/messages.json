@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "type": "question",
+    "text": "fjekfkewjfkejkjkjkjjkjkjkj",
+    "createdAt": "11.21"
+  },
+  {
+    "type": "answer",
+    "text": "Jeg er ikke sikker på, hvad du mener. Kan du uddybe?",
+    "createdAt": "11.21"
+  }
+]

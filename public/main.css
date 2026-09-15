@@ -8,6 +8,7 @@
   --dark-accent-color: #dff0b9;
   --light-accent-color: #eaeaea;
   --cta-color: #a8f00c;
+  --alert-color: #ff0000;
   --light-blue: 184, 214, 255;
 
   --border-radius: 50px;
@@ -62,6 +63,11 @@ li {
   color: var(--secondary-color);
 }
 
+span{
+  font-family: "poppins", sans-serif;
+  color: var(--secondary-color);
+}
+
 .flex-row {
   display: flex;
   flex-direction: row;
@@ -100,6 +106,12 @@ img {
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
+}
+
+/*--------------------NOTIFICATION UI---------------------*/
+
+.alert{
+  color: var(--alert-color);
 }
 
 /*--------------------FORM--------------------------*/
