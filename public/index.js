@@ -19,7 +19,7 @@ function handleInputChange(event) {
     submitBtn.disabled = true;
   }
 
-  if (inputValueLength === 20) {
+  if (inputValueLength === 250) {
     characterCounter.classList.add("alert");
     characterLimit.classList.add("alert");
     characterCountMessage.textContent = "Du har nået maksimum antal karakterer.";
