@@ -76,7 +76,7 @@ span {
 .flex-row {
 	display: flex;
 	flex-direction: row;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: center;
 	gap: 10px;
 }
@@ -168,6 +168,15 @@ input {
 	border-radius: var(--border-radius);
 }
 
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    gap: 5px;
+}
+
 form button {
 	background-color: var(--inactive-color);
 	color: var(--secondary-color);
@@ -239,9 +248,16 @@ form button {
 	margin-top: 5px;
 }
 
+.character-count-container {
+    display: flex;
+    align-items: center;
+    justify-self: flex-end;
+    margin-right: 10px;
+}
+
 .character-count-container span {
     font-size: 0.8rem;
-    color: var(--secondary-color);
+    margin-left: 5px;
 }
 
 #character-count-message {

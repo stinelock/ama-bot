@@ -1,4 +1,5 @@
 const characterCounter = document.getElementById("character-count");
+const characterLimit = document.getElementById("character-limit");
 const characterCountMessage = document.getElementById("character-count-message");
 const submitBtn = document.getElementById("send-button");
 
@@ -19,9 +20,12 @@ function handleInputChange(event) {
   }
 
   if (inputValueLength === 20) {
-    characterCounter.classList.toggle("alert");
+    characterCounter.classList.add("alert");
+    characterLimit.classList.add("alert");
     characterCountMessage.textContent = "Du har nået maksimum antal karakterer.";
   } else {
+    characterCounter.classList.remove("alert");
+    characterLimit.classList.remove("alert");
     characterCountMessage.textContent = "";
   }
 

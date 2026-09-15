@@ -51,6 +51,7 @@
                 >Stil dit spørgsmål her:</label
               >
               <div class="flex-row">
+                <div class="input-container">
                 <input
                   type="text"
                   name="question"
@@ -58,6 +59,12 @@
                   placeholder="Hvad vil du gerne vide?"
                   maxlength="20"
                 />
+                    <div class="character-count-container">
+                        <span id="character-count-message"></span>
+                        <span id="character-count">0</span><span id="character-limit">/20</span>
+                    </div>
+               
+                </div>
                 <button id="send-button" type="submit">
                   <img src="/images/send-btn.svg" />
                 </button>
@@ -66,10 +73,7 @@
             <% if (error) { %>
             <p role="alert" aria-live="polite" class="error"><%= error %></p>
             <% } %>
-            <div class="character-count-container">
-                <span id="character-count">0</span><span>/20</span>
-                <span id="character-count-message"></span>
-            </div>
+         
       
         </section>  
       
