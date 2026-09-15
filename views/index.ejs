@@ -14,7 +14,10 @@
   </head>
   <body>
     <header>
-      <h1 class="text-light">AMAbot</h1>
+      <h1>AMAbot</h1>
+          <form method="POST" action="/reset" class="reset-form">
+          <button type="submit" class = "btn-secondary">Reset chat</button>
+        </form>
     </header>
     <main>
       <div class="main-grid">
@@ -48,23 +51,32 @@
                 >Stil dit spørgsmål her:</label
               >
               <div class="flex-row">
+                <div class="input-container">
                 <input
                   type="text"
                   name="question"
                   id="question"
                   placeholder="Hvad vil du gerne vide?"
+                  maxlength="250"
                 />
-                <button type="submit">
+                    <div class="character-count-container">
+                        <span id="character-count-message"></span>
+                        <span id="character-count">0</span><span id="character-limit">/250</span>
+                    </div>
+               
+                </div>
+                <button id="send-button" type="submit">
                   <img src="/images/send-btn.svg" />
                 </button>
               </div>
             </form>
             <% if (error) { %>
-            <p role="alert"><%= error %></p>
+            <p role="alert" aria-live="polite" class="error"><%= error %></p>
             <% } %>
-                  <div>
- <span id="character-count">0</span><span>/20</span>
-        </div>
+         
+      
+        </section>  
+      
           </section>
         </section>
         <section class="stats-section">
@@ -75,12 +87,7 @@
             <li><%= key %>: <%= value %></li>
             <% } %>
           </ul>
-           <form method="POST" action="/reset">
-          <button type="submit">Reset chat</button>
-        </form>
         </section>
-      
-       
       </div>
     </main>
   </body>

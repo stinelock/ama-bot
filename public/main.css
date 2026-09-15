@@ -1,213 +1,281 @@
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 :root {
-  --primary-color: #fffef5;
-  --secondary-color: #33332e;
-  --dark-accent-color: #dff0b9;
-  --light-accent-color: #eaeaea;
-  --cta-color: #a8f00c;
-  --alert-color: #ff0000;
-  --light-blue: 184, 214, 255;
+	--primary-color: #fffef5;
+	--secondary-color: #33332e;
+	--light-green-color: #dff0b9;
+	--light-grey-color: #eaeaea;
+	--cta-color: #a8f00c;
+	--light-blue: 184, 214, 255;
+    --dark-blue:#383495;
+	--alert-color: #ff0000;
+	--inactive-color: #c5c5c5;
 
-  --border-radius: 50px;
-  --question-border-radius: 50px 50px 10px 50px;
-  --answer-border-radius: 50px 50px 50px 10px;
+	--border-radius: 50px;
+	--question-border-radius: 50px 50px 10px 50px;
+	--answer-border-radius: 50px 50px 50px 10px;
 
-  font-family: "graveur-variable", sans-serif;
-  font-variation-settings:
-    "opsz" 10,
-    "wght" 400;
+	font-family: "graveur-variable", sans-serif;
+	font-variation-settings:
+		"opsz" 10,
+		"wght" 400;
 }
 
 body {
-  width: 100%;
-  height: 100%;
-  /* font-family: "helvetica", sans-serif; */
-  margin: 0;
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
+	width: 100%;
+	height: 100%;
+	/* font-family: "helvetica", sans-serif; */
+	margin: 0;
+	background-color: var(--primary-color);
+	color: var(--secondary-color);
 }
 
 main {
-  width: 100%;
-  height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 header {
-  text-align: center;
-  background-color: var(--secondary-color);
-  padding: 20px;
+    display: flex;
+    flex-direction:row;
+	text-align: center;
+	background-color: rgb(var(--light-blue), 0.5);
+	padding: 20px;
+    margin-bottom: 50px;
 }
 
 h1 {
-  margin: 0;
-  color: var(--secondary-color);
+	margin: 0;
+	color: var(--secondary-color);
 }
 
 h2 {
-  margin: 0;
-  color: var(--secondary-color);
-  font-family: "poppins", sans-serif;
-  font-weight: normal;
+	margin: 0;
+	color: var(--secondary-color);
+	font-family: "poppins", sans-serif;
+	font-weight: normal;
 }
 
 p {
-  font-family: "poppins", sans-serif;
-  color: var(--secondary-color);
+	font-family: "poppins", sans-serif;
+	color: var(--secondary-color);
 }
 
 li {
-  font-family: "poppins", sans-serif;
-  color: var(--secondary-color);
+	font-family: "poppins", sans-serif;
+	color: var(--secondary-color);
 }
 
-span{
-  font-family: "poppins", sans-serif;
-  color: var(--secondary-color);
+span {
+	font-family: "poppins", sans-serif;
+	color: var(--secondary-color);
 }
 
 .flex-row {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: center;
+	gap: 10px;
 }
 
 .text-light {
-  color: var(--primary-color);
+	color: var(--primary-color);
 }
 
 img {
-  align-self: end;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
+	align-self: end;
+	width: 100%;
+	height: auto;
+	object-fit: cover;
 }
 
 .main-grid {
-  display: grid;
-  grid-template-columns: 2fr 3fr 1fr;
-  height: auto;
-  max-height: 100vh;
-  width: 100%;
-  gap: 70px;
-  padding: 50px 50px 50px 0;
+	display: grid;
+	grid-template-columns: 2fr 3fr 1fr;
+	height: auto;
+	max-height: 100vh;
+	width: 100%;
+	gap: 70px;
+	padding: 50px 50px 50px 0;
 }
 
 .main-section {
-  grid-column-start: 2;
-  width: 100%;
-  height: 70vh;
-  min-height: 50vh;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
+	grid-column-start: 2;
+	width: 100%;
+	height: 70vh;
+	min-height: 50vh;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-between;
 }
 
-/*--------------------NOTIFICATION UI---------------------*/
+/*--------------------NOTIFICATION CSS---------------------*/
 
-.alert{
-  color: var(--alert-color);
+.alert {
+	color: var(--alert-color);
+}
+
+.active {
+	background-color: var(--cta-color);
+}
+
+.error {
+    color: var(--alert-color);
+    font-size: 0.8rem;
+    margin-top: 5px;
 }
 
 /*--------------------FORM--------------------------*/
 
 form {
-  font-family: "poppins", sans-serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10px;
-  margin: 20px 0;
-  width: 100%;
+	font-family: "poppins", sans-serif;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 10px;
+	margin: 20px 0;
+	width: 100%;
+}
+
+.reset-form {
+    margin: 0;
+    width: 100%;
+}
+
+.reset-form button {
+    background-color: var(--dark-blue);
+    color: var(--primary-color);
+    transition: all 0.3s ease-in-out;
+}
+
+.reset-form button:hover {
+    background-color: transparent;
+    border: 2px solid var(--dark-blue);
+    color: var(--secondary-color);
 }
 
 input {
-  font-family: "poppins", sans-serif;
-  border: 2px solid var(--secondary-color);
-  padding-left: 10px;
-  width: 100%;
-  height: 100%;
-  min-height: 50px;
-  border-radius: var(--border-radius);
+	font-family: "poppins", sans-serif;
+	border: 2px solid var(--secondary-color);
+	padding-left: 10px;
+	width: 100%;
+	height: 100%;
+	min-height: 50px;
+	border-radius: var(--border-radius);
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    gap: 5px;
 }
 
 form button {
-  background-color: var(--cta-color);
-  color: var(--secondary-color);
-  border: none;
-  height: 50px;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: var(--border-radius);
+	background-color: var(--inactive-color);
+	color: var(--secondary-color);
+	border: none;
+	height: 50px;
+	padding: 10px 20px;
+	cursor: pointer;
+	border-radius: var(--border-radius);
+}
+
+.btn-secondary {
+    align-self: end;
+    border: none;
+    height: 50px;
+    width: 125px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: var(--border-radius);
 }
 
 .form-section {
-  width: 100%;
+	width: 100%;
 }
 
 /*----------------------------------------CHAT CSS-----------------------------------*/
 
 .chat-section {
-  width: 100%;
-  height: 100%;
-  min-height: 50vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
+	width: 100%;
+	height: 100%;
+	min-height: 50vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-end;
 }
 
 .chat-box {
-  display: flex;
-  flex-direction: column;
-  height: auto;
-  margin-bottom: 20px;
-  width: 100%;
+	display: flex;
+	flex-direction: column;
+	height: auto;
+	margin-bottom: 20px;
+	width: 100%;
 }
 
 .chat-box:nth-child(odd) {
-  align-items: flex-end;
+	align-items: flex-end;
 }
 
 .question {
-  background-color: var(--dark-accent-color);
-  padding: 0 20px;
-  width: fit-content;
-  height: auto;
-  border-radius: var(--question-border-radius);
+	background-color: var(--light-green-color);
+	padding: 0 20px;
+	width: fit-content;
+	height: auto;
+	border-radius: var(--question-border-radius);
 }
 
 .answer {
-  align-self: flex-start;
-  background-color: var(--light-accent-color);
-  padding: 0 20px;
-  width: auto;
-  height: auto;
-  border-radius: var(--answer-border-radius);
+	align-self: flex-start;
+	background-color: var(--light-grey-color);
+	padding: 0 20px;
+	width: auto;
+	height: auto;
+	border-radius: var(--answer-border-radius);
 }
 
 .timestamp {
-  font-size: 0.8rem;
-  color: var(--secondary-color);
-  margin-top: 5px;
+	font-size: 0.8rem;
+	color: var(--secondary-color);
+	margin-top: 5px;
+}
+
+.character-count-container {
+    display: flex;
+    align-items: center;
+    justify-self: flex-end;
+    margin-right: 10px;
+}
+
+.character-count-container span {
+    font-size: 0.8rem;
+    margin-left: 5px;
+}
+
+#character-count-message {
+    color: var(--alert-color);
+    font-size: 0.8rem;
+    margin-left: 10px;
 }
 
 /*-------------------------STATS SECTION----------------------------*/
 
 .stats-section {
-  width: 100%;
-  height: fit-content;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  /* border: 2px solid rgb(var(--light-blue)); */
-  border-radius: var(--border-radius);
-  background-color: rgb(var(--light-blue), 0.5);
+	width: 100%;
+	height: fit-content;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	border-radius: var(--border-radius);
+	background-color: rgb(var(--light-blue), 0.5);
 }
