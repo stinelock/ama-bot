@@ -149,12 +149,12 @@ form {
 .reset-form button {
     background-color: var(--dark-blue);
     color: var(--primary-color);
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out;
 }
 
 .reset-form button:hover {
     background-color: transparent;
-    border: 1px solid var(--dark-blue);
+    border: 2px solid var(--dark-blue);
     color: var(--secondary-color);
 }
 
@@ -182,7 +182,7 @@ form button {
     align-self: end;
     border: none;
     height: 50px;
-    width: fit-content;
+    width: 125px;
     padding: 10px 20px;
     cursor: pointer;
     border-radius: var(--border-radius);
