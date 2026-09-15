@@ -5,10 +5,11 @@
 :root {
 	--primary-color: #fffef5;
 	--secondary-color: #33332e;
-	--dark-accent-color: #dff0b9;
-	--light-accent-color: #eaeaea;
+	--light-green-color: #dff0b9;
+	--light-grey-color: #eaeaea;
 	--cta-color: #a8f00c;
 	--light-blue: 184, 214, 255;
+    --dark-blue:#383495;
 	--alert-color: #ff0000;
 	--inactive-color: #c5c5c5;
 
@@ -37,9 +38,12 @@ main {
 }
 
 header {
+    display: flex;
+    flex-direction:row;
 	text-align: center;
-	background-color: var(--secondary-color);
+	background-color: rgb(var(--light-blue), 0.5);
 	padding: 20px;
+    margin-bottom: 50px;
 }
 
 h1 {
@@ -109,7 +113,7 @@ img {
 	justify-content: space-between;
 }
 
-/*--------------------NOTIFICATION UI---------------------*/
+/*--------------------NOTIFICATION CSS---------------------*/
 
 .alert {
 	color: var(--alert-color);
@@ -117,6 +121,12 @@ img {
 
 .active {
 	background-color: var(--cta-color);
+}
+
+.error {
+    color: var(--alert-color);
+    font-size: 0.8rem;
+    margin-top: 5px;
 }
 
 /*--------------------FORM--------------------------*/
@@ -129,6 +139,23 @@ form {
 	gap: 10px;
 	margin: 20px 0;
 	width: 100%;
+}
+
+.reset-form {
+    margin: 0;
+    width: 100%;
+}
+
+.reset-form button {
+    background-color: var(--dark-blue);
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.reset-form button:hover {
+    background-color: transparent;
+    border: 1px solid var(--dark-blue);
+    color: var(--secondary-color);
 }
 
 input {
@@ -149,6 +176,16 @@ form button {
 	padding: 10px 20px;
 	cursor: pointer;
 	border-radius: var(--border-radius);
+}
+
+.btn-secondary {
+    align-self: end;
+    border: none;
+    height: 50px;
+    width: fit-content;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: var(--border-radius);
 }
 
 .form-section {
@@ -180,7 +217,7 @@ form button {
 }
 
 .question {
-	background-color: var(--dark-accent-color);
+	background-color: var(--light-green-color);
 	padding: 0 20px;
 	width: fit-content;
 	height: auto;
@@ -189,7 +226,7 @@ form button {
 
 .answer {
 	align-self: flex-start;
-	background-color: var(--light-accent-color);
+	background-color: var(--light-grey-color);
 	padding: 0 20px;
 	width: auto;
 	height: auto;
@@ -212,7 +249,6 @@ form button {
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: flex-start;
-	/* border: 2px solid rgb(var(--light-blue)); */
 	border-radius: var(--border-radius);
 	background-color: rgb(var(--light-blue), 0.5);
 }
