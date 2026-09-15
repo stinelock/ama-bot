@@ -80,8 +80,6 @@ function findBestAnswer(question) {
   for (const answerGroup of answers) {
     const score = countMatches(answerGroup.keywords, normalizedQuestion);
 
-    console.log(`Score for category "${answerGroup.category}": ${score}`);
-
     if (score === bestScore && score > 0) {
       if (typeof bestCategory === "string") {
         bestCategory = [bestCategory];

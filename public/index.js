@@ -12,8 +12,10 @@ function handleInputChange(event) {
 
   if (inputValueLength > 0) {
     submitBtn.classList.add("active");
+    submitBtn.disabled = false;
   } else {
     submitBtn.classList.remove("active")
+    submitBtn.disabled = true;
   }
 
   if (inputValueLength === 20) {
