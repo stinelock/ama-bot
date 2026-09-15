@@ -239,6 +239,17 @@ form button {
 	margin-top: 5px;
 }
 
+.character-count-container span {
+    font-size: 0.8rem;
+    color: var(--secondary-color);
+}
+
+#character-count-message {
+    color: var(--alert-color);
+    font-size: 0.8rem;
+    margin-left: 10px;
+}
+
 /*-------------------------STATS SECTION----------------------------*/
 
 .stats-section {
