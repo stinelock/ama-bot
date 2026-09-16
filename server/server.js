@@ -104,11 +104,8 @@ function sanitizeQuestion(input) {
 
 //----------------------ROUTES----------------------//
 
-app.get("/messages", async (req, res) => {
-    const messages = await loadMessages();
-    res.json(messages);
-  });
 
+  //---------------DU ER NÅET TIL STEP 6 I ØVELSE 6----------------//
 
 //----------------------OPSTART AF SERVER----------------------//
 
