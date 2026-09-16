@@ -104,66 +104,6 @@ function sanitizeQuestion(input) {
 
 //----------------------ROUTES----------------------//
 
-app.get("/", async (req, res) => {
-  const messages = await loadMessages();
-  res.json({ messages: messages.slice(-4), error: "", topicStats });
-});
-
-
-app.post("/ask", async (req, res) => {
-  const messages = await loadMessages();
-
-  const rawQuestion = req.body.question;
-  const question = sanitizeQuestion(rawQuestion).trim();
-
-  let error = "";
-
-  if (!question) {
-    error = "Skriv et spørgsmål før du trykker på send.";
-  } else {
-    messages.push({
-      type: "question",
-      text: question,
-      createdAt: new Date().toLocaleString("da-DK", {
-        hour: "2-digit",
-        minute: "2-digit",
-      }),
-    });
-
-    const result = findBestAnswer(question);
-
-    if (result.category) {
-      if (Array.isArray(result.category)) {
-        result.category.forEach((category) => {
-          topicStats[category] += 1;
-        });
-      } else {
-        topicStats[result.category] += 1; //tilføjer 1 point til den kategori der matcher spørgsmålet
-      }
-    }
-
-    messages.push({
-      type: "answer",
-      text: result.answer,
-      createdAt: new Date().toLocaleString("da-DK", { hour: '2-digit', minute: '2-digit' })
-    });
-  }
-  await saveMessages(messages);
-
-  res.render("index", { messages: messages.slice(-4), error, topicStats });
-});
-
-
-
-
-
-app.post("/reset", async (req, res) => {
-  const resetMessages = [];
-
-  await saveMessages(resetMessages);
-
-  res.redirect("/");
-});
 
 //----------------------OPSTART AF SERVER----------------------//
 
