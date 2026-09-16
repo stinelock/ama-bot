@@ -6,9 +6,7 @@ const port = 8000;
 
 //----------------------MIDDLEWARE----------------------//
 
-app.use(express.static("public")); // Giver express adgang til min public mappe
-app.use(express.urlencoded({ extended: true })); // Giver express adgang til at parse data fra formular
-app.set("view engine", "ejs");
+app.use(express.json());
 
 //---------------------SAMTALELOGIK---------------------//
 const answers = [
@@ -108,7 +106,7 @@ function sanitizeQuestion(input) {
 
 app.get("/", async (req, res) => {
   const messages = await loadMessages();
-  res.render("index", { messages: messages.slice(-4), error: "", topicStats });
+  res.json({ messages: messages.slice(-4), error: "", topicStats });
 });
 
 
