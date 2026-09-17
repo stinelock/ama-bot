@@ -1,1 +1,62 @@
-[]
+[
+  {
+    "type": "question",
+    "text": "Hvad hedder du?",
+    "createdAt": "2026-09-17T09:03:19.200Z"
+  },
+  {
+    "type": "question",
+    "text": "Hvad hedder du?",
+    "createdAt": "2026-09-17T09:04:56.497Z"
+  },
+  {
+    "type": "question",
+    "text": "Hvad hedder du?",
+    "createdAt": "2026-09-17T09:04:57.365Z"
+  },
+  {
+    "type": "question",
+    "text": "Hvad hedder du?",
+    "createdAt": "2026-09-17T09:04:58.289Z"
+  },
+  {
+    "type": "question",
+    "text": "Hvad hedder du?",
+    "createdAt": "2026-09-17T09:04:58.822Z"
+  },
+  {
+    "type": "question",
+    "text": "Hvad hedder du?",
+    "createdAt": "2026-09-17T09:04:59.321Z"
+  },
+  {
+    "type": "question",
+    "text": "Hvem er du?",
+    "createdAt": "2026-09-17T09:05:13.927Z"
+  },
+  {
+    "type": "question",
+    "text": "Hvem er du?",
+    "createdAt": "2026-09-17T09:09:17.179Z"
+  },
+  {
+    "type": "answer",
+    "text": "Jeg hedder Stine.",
+    "category": "navn",
+    "createdAt": "2026-09-17T09:09:17.180Z"
+  },
+  {
+    "type": "question",
+    "text": "Hvem er du og hvor bor du?",
+    "createdAt": "2026-09-17T09:09:48.747Z"
+  },
+  {
+    "type": "answer",
+    "text": "Jeg hedder Stine. Jeg bor på Frederiksbjerg i Aarhus.",
+    "category": [
+      "navn",
+      "bosted"
+    ],
+    "createdAt": "2026-09-17T09:09:48.748Z"
+  }
+]
