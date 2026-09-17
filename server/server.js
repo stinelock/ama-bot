@@ -94,7 +94,7 @@ app.post("/messages", async (req, res) => {
 	const messages = await loadMessages();
 	const rawQuestion = req.body.question.trim();
 	const question = sanitizeQuestion(rawQuestion);
-    const answers = await loadAnswers();
+	const answers = await loadAnswers();
 
 	if (!question) {
 		res.json({ error: "Skriv et spørgsmål, før du sender." });
@@ -148,16 +148,30 @@ app.get("/answers/:category", async (req, res) => {
 app.post("/answers", async (req, res) => {
 	const answers = await loadAnswers();
 
-    const newAnswerRule = {
-        category: req.body.category,
-        keywords: req.body.keywords,
-        answer: req.body.answer,
-    }
+	const newAnswerRule = {
+		category: req.body.category,
+		keywords: req.body.keywords,
+		answer: req.body.answer,
+	};
 
-    answers.push(newAnswerRule);
-    await saveAnswers(answers);
-    
-    res.json(newAnswerRule);
+	answers.push(newAnswerRule);
+	await saveAnswers(answers);
+
+	res.json(newAnswerRule);
+});
+
+app.put("/answers/:category", async (req, res) => {
+	const answers = await loadAnswers();
+
+	const answerRule = answers.find(
+		(answer) => answer.category === req.params.category,
+	);
+
+	answerRule.keywords = req.body.keywords;
+	answerRule.answer = req.body.answer;
+	await saveAnswers(answers);
+
+	res.json(answerRule);
 });
 
 //----------------------OPSTART AF SERVER----------------------//
