@@ -105,6 +105,8 @@ app.get("/messages", async (req, res) => {
 	res.json(messages);
 });
 
+
+
 app.post("/messages", async (req, res) => {
 	const messages = await loadMessages();
 	const rawQuestion = req.body.question.trim();
@@ -136,6 +138,15 @@ app.post("/messages", async (req, res) => {
 
 	res.json({ question: message, answer: answerMessage });
 });
+
+
+app.delete("/messages", async (req, res) => {
+    await saveMessages([]);
+
+    res.send();
+})
+
+
 //----------------------OPSTART AF SERVER----------------------//
 
 app.listen(port, () => {
