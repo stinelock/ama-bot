@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "type": "question",
+    "text": "hvad er din livret?",
+    "createdAt": "2026-09-17T10:30:15.806Z"
+  },
+  {
+    "type": "answer",
+    "text": "Jeg er ikke sikker på, hvad du mener. Kan du uddybe?",
+    "category": "",
+    "createdAt": "2026-09-17T10:30:15.806Z"
+  }
+]

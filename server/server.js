@@ -174,6 +174,15 @@ app.put("/answers/:category", async (req, res) => {
 	res.json(answerRule);
 });
 
+app.delete("/answers/:category", async (req, res) => {
+	const answers = await loadAnswers();
+
+	const updatedAnswers = answers.filter((answer) => answer.category !== req.params.category);
+
+    await saveAnswers(updatedAnswers);
+    res.send();
+});
+
 //----------------------OPSTART AF SERVER----------------------//
 
 app.listen(port, () => {
