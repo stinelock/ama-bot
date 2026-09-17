@@ -8,34 +8,7 @@ const port = 8000;
 
 app.use(express.json());
 
-//---------------------SAMTALELOGIK---------------------//
-const answers = [
-	{
-		category: "navn",
-		keywords: ["navn", "hedder", "hvem er du"],
-		answer: "Jeg hedder Stine.",
-	},
-	{
-		category: "alder",
-		keywords: ["gammel", "år", "alder"],
-		answer: "Jeg er 26 år gammel.",
-	},
-	{
-		category: "bosted",
-		keywords: ["bor", "by", "lever"],
-		answer: "Jeg bor på Frederiksbjerg i Aarhus.",
-	},
-	{
-		category: "hobbyer",
-		keywords: ["hobby", "hobbyer", "fritid", "kan lide"],
-		answer: "I min fritid kan jeg godt lide at tegne, strikke, gå til gymnastik og være sammen med min venner.",
-	},
-	{
-		category: "sport",
-		keywords: ["går", "gå til", "går du til", "sport"],
-		answer: "I min fritid går jeg til gymnastik.",
-	},
-];
+//----------------------STATS----------------------//
 
 const topicStats = {
 	navn: 0,
@@ -56,6 +29,18 @@ async function loadMessages() {
 async function saveMessages(messages) {
 	const json = JSON.stringify(messages, null, 2);
 	await fs.writeFile("./data/messages.json", json);
+}
+
+async function loadAnswers() {
+	const data = await fs.readFile("./data/answers.json", "utf-8");
+	const answers = JSON.parse(data);
+
+	return answers;
+}
+
+async function saveAnswers() {
+	const json = JSON.stringify(answers, null, 2);
+	await fs.writeFile("./data/answers.json", json);
 }
 
 function countMatches(keywords, normalizedQuestion) {
@@ -97,7 +82,7 @@ function sanitizeQuestion(input) {
 	return input.replace(/[\u0000-\u001F\u007F]/g, ""); //Fjerner kontroltegn og usynlige tegn fra inputtet
 }
 
-//----------------------ROUTES----------------------//
+//----------------------REST API ROUTES----------------------//
 
 app.get("/messages", async (req, res) => {
 	const messages = await loadMessages();
@@ -105,47 +90,49 @@ app.get("/messages", async (req, res) => {
 	res.json(messages);
 });
 
-
-
 app.post("/messages", async (req, res) => {
 	const messages = await loadMessages();
 	const rawQuestion = req.body.question.trim();
-    const question = sanitizeQuestion(rawQuestion);
+	const question = sanitizeQuestion(rawQuestion);
 
 	if (!question) {
 		res.json({ error: "Skriv et spørgsmål, før du sender." });
 		return;
 	}
 
-    const message = {
-        type: "question",
-        text: question,
-        createdAt: new Date().toISOString(),
-    };
-    messages.push(message);
+	const message = {
+		type: "question",
+		text: question,
+		createdAt: new Date().toISOString(),
+	};
+	messages.push(message);
 
-    const result = findBestAnswer(question);
+	const result = findBestAnswer(question);
 
-    const answerMessage = {
-        type: "answer",
-        text: result.answer,
-        category: result.category,
-        createdAt: new Date().toISOString(),
-    };
-    messages.push(answerMessage);
+	const answerMessage = {
+		type: "answer",
+		text: result.answer,
+		category: result.category,
+		createdAt: new Date().toISOString(),
+	};
+	messages.push(answerMessage);
 
-    await saveMessages(messages);
+	await saveMessages(messages);
 
 	res.json({ question: message, answer: answerMessage });
 });
 
-
 app.delete("/messages", async (req, res) => {
-    await saveMessages([]);
+	await saveMessages([]);
 
-    res.send();
-})
+	res.send();
+});
 
+app.get("/answers", async (req, res) => {
+	const answers = await loadAnswers();
+
+	res.json(answers);
+});
 
 //----------------------OPSTART AF SERVER----------------------//
 
