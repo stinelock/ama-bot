@@ -38,7 +38,7 @@ async function loadAnswers() {
 	return answers;
 }
 
-async function saveAnswers() {
+async function saveAnswers(answers) {
 	const json = JSON.stringify(answers, null, 2);
 	await fs.writeFile("./data/answers.json", json);
 }
@@ -50,7 +50,7 @@ function countMatches(keywords, normalizedQuestion) {
 	return matches.length;
 }
 
-function findBestAnswer(question) {
+function findBestAnswer(question, answers) {
 	const normalizedQuestion = question.toLowerCase();
 
 	let bestScore = 0;
@@ -94,6 +94,7 @@ app.post("/messages", async (req, res) => {
 	const messages = await loadMessages();
 	const rawQuestion = req.body.question.trim();
 	const question = sanitizeQuestion(rawQuestion);
+    const answers = await loadAnswers();
 
 	if (!question) {
 		res.json({ error: "Skriv et spørgsmål, før du sender." });
@@ -107,7 +108,7 @@ app.post("/messages", async (req, res) => {
 	};
 	messages.push(message);
 
-	const result = findBestAnswer(question);
+	const result = findBestAnswer(question, answers);
 
 	const answerMessage = {
 		type: "answer",
@@ -132,6 +133,31 @@ app.get("/answers", async (req, res) => {
 	const answers = await loadAnswers();
 
 	res.json(answers);
+});
+
+app.get("/answers/:category", async (req, res) => {
+	const answers = await loadAnswers();
+
+	const answerRule = answers.find(
+		(answer) => answer.category === req.params.category,
+	);
+
+	res.json(answerRule);
+});
+
+app.post("/answers", async (req, res) => {
+	const answers = await loadAnswers();
+
+    const newAnswerRule = {
+        category: req.body.category,
+        keywords: req.body.keywords,
+        answer: req.body.answer,
+    }
+
+    answers.push(newAnswerRule);
+    await saveAnswers(answers);
+    
+    res.json(newAnswerRule);
 });
 
 //----------------------OPSTART AF SERVER----------------------//

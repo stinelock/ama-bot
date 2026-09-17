@@ -1,27 +1,58 @@
 [
-	{
-		"category": "navn",
-		"keywords": ["navn", "hedder", "hvem er du"],
-		"answer": "Jeg hedder Stine."
-	},
-	{
-		"category": "alder",
-		"keywords": ["gammel", "år", "alder"],
-		"answer": "Jeg er 26 år gammel."
-	},
-	{
-		"category": "bosted",
-		"keywords": ["bor", "by", "lever"],
-		"answer": "Jeg bor på Frederiksbjerg i Aarhus."
-	},
-	{
-		"category": "hobbyer",
-		"keywords": ["hobby", "hobbyer", "fritid", "kan lide"],
-		"answer": "I min fritid kan jeg godt lide at tegne, strikke, gå til gymnastik og være sammen med min venner."
-	},
-	{
-		"category": "sport",
-		"keywords": ["går", "gå til", "går du til", "sport"],
-		"answer": "I min fritid går jeg til gymnastik."
-	}
+  {
+    "category": "navn",
+    "keywords": [
+      "navn",
+      "hedder",
+      "hvem er du"
+    ],
+    "answer": "Jeg hedder Stine."
+  },
+  {
+    "category": "alder",
+    "keywords": [
+      "gammel",
+      "år",
+      "alder"
+    ],
+    "answer": "Jeg er 26 år gammel."
+  },
+  {
+    "category": "bosted",
+    "keywords": [
+      "bor",
+      "by",
+      "lever"
+    ],
+    "answer": "Jeg bor på Frederiksbjerg i Aarhus."
+  },
+  {
+    "category": "hobbyer",
+    "keywords": [
+      "hobby",
+      "hobbyer",
+      "fritid",
+      "kan lide"
+    ],
+    "answer": "I min fritid kan jeg godt lide at tegne, strikke, gå til gymnastik og være sammen med min venner."
+  },
+  {
+    "category": "sport",
+    "keywords": [
+      "går",
+      "gå til",
+      "går du til",
+      "sport"
+    ],
+    "answer": "I min fritid går jeg til gymnastik."
+  },
+  {
+    "category": "mad",
+    "keywords": [
+      "mad",
+      "spise",
+      "livret"
+    ],
+    "answer": "Min livret er lasagne."
+  }
 ]

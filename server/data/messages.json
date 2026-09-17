@@ -58,5 +58,16 @@
       "bosted"
     ],
     "createdAt": "2026-09-17T09:09:48.748Z"
+  },
+  {
+    "type": "question",
+    "text": "hvad er din livret?",
+    "createdAt": "2026-09-17T10:13:55.095Z"
+  },
+  {
+    "type": "answer",
+    "text": "Min livret er lasagne.",
+    "category": "mad",
+    "createdAt": "2026-09-17T10:13:55.096Z"
   }
 ]
