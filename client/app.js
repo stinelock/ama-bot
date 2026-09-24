@@ -1,5 +1,6 @@
 const chatForm = document.getElementById("chat-form");
 const chatSection = document.querySelector(".chat-section");
+const introSection = document.getElementById("intro-section");
 const questionInput = document.getElementById("question");
 const sendBtn = document.getElementById("send-button");
 const clearBtn = document.getElementById("clear-chat-btn");
@@ -15,6 +16,11 @@ async function getMessages() {
 		}
 
 		const messages = await res.json();
+		if (messages.length === 0) {
+			introSection.classList.remove("hidden");
+		} else {
+			introSection.classList.add("hidden");
+		}
 
 		for (message of messages) {
 			displayMessage(message);
@@ -59,6 +65,7 @@ async function handleChatSubmit(event) {
 
 		const data = await res.json();
 
+        introSection.classList.add("hidden");
 		displayMessage(data.question);
 		displayMessage(data.answer);
 
@@ -71,7 +78,6 @@ async function handleChatSubmit(event) {
 clearBtn.addEventListener("click", clearChat);
 
 async function clearChat() {
-
 	try {
 		const res = await fetch(`${API_URL}/messages`, {
 			method: "DELETE",
@@ -81,7 +87,8 @@ async function clearChat() {
 			throw new Error(`Server error: ${res.status}`);
 		}
 
-        chatSection.innerHTML=""
+		chatSection.innerHTML = "";
+		introSection.classList.remove("hidden");
 	} catch (error) {
 		console.error("Error submitting question:", error);
 	}
