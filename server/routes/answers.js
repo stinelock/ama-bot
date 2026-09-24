@@ -1,62 +1,12 @@
 import express from "express";
-import { loadAnswers, saveAnswers } from "../data/answers.js";
+import {getAllAnswers, getAnswerByCategory, createAnswer, updateAnswer, deleteAnswer} from "../controllers/answersControllers.js";
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
-	const answers = await loadAnswers();
-
-	res.json(answers);
-});
-
-router.get("/:category", async (req, res) => {
-	const answers = await loadAnswers();
-
-	const answerRule = answers.find(
-		(answer) => answer.category === req.params.category,
-	);
-
-	res.json(answerRule);
-});
-
-router.post("/", async (req, res) => {
-	const answers = await loadAnswers();
-
-	const newAnswerRule = {
-		category: req.body.category,
-		keywords: req.body.keywords,
-		answer: req.body.answer,
-	};
-
-	answers.push(newAnswerRule);
-	await saveAnswers(answers);
-
-	res.json(newAnswerRule);
-});
-
-router.put("/:category", async (req, res) => {
-	const answers = await loadAnswers();
-
-	const answerRule = answers.find(
-		(answer) => answer.category === req.params.category,
-	);
-
-	answerRule.keywords = req.body.keywords;
-	answerRule.answer = req.body.answer;
-	await saveAnswers(answers);
-
-	res.json(answerRule);
-});
-
-router.delete("/:category", async (req, res) => {
-	const answers = await loadAnswers();
-
-	const updatedAnswers = answers.filter(
-		(answer) => answer.category !== req.params.category,
-	);
-
-	await saveAnswers(updatedAnswers);
-	res.send();
-});
+router.get("/", getAllAnswers);
+router.get("/:category", getAnswerByCategory);
+router.post("/", createAnswer);
+router.put("/:category", updateAnswer);
+router.delete("/:category", deleteAnswer);
 
 export default router;

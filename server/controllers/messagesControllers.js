@@ -8,7 +8,6 @@ export async function getAllMessages(req, res) {
 }
 
 
-
 export async function createMessage(req, res) {
 	const messages = await loadMessages();
 	const rawQuestion = req.body.question.trim();
