@@ -283,3 +283,7 @@ form button {
 	border-radius: var(--border-radius);
 	background-color: rgb(var(--light-blue), 0.5);
 }
+
+#portrait{
+    margin-bottom: 50px;
+}
