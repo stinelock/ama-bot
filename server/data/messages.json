@@ -1,13 +1,1 @@
-[
-  {
-    "type": "question",
-    "text": "hvad hedder du?",
-    "createdAt": "13.56"
-  },
-  {
-    "type": "answer",
-    "text": "Jeg hedder Stine.",
-    "category": "navn",
-    "createdAt": "13.56"
-  }
-]
+[]

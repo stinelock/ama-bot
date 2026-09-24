@@ -16,16 +16,15 @@ async function getMessages() {
 
 		const messages = await res.json();
 
-        for (message of messages){
-            displayMessage(message)
-        }
-
-        console.log(messages);
-
+		for (message of messages) {
+			displayMessage(message);
+		}
 	} catch (error) {
 		console.log("fejl i fetch af data");
 	}
 }
+
+getMessages();
 
 function displayMessage(message) {
 	const html = `<article class="chat-box">
@@ -38,7 +37,52 @@ function displayMessage(message) {
 	chatSection.insertAdjacentHTML("beforeend", html);
 }
 
-displayMessage({ type: "question", text: "Test", createdAt: "now" });
-displayMessage({ type: "answer", text: "Test" });
+chatForm.addEventListener("submit", handleChatSubmit);
 
-getMessages()
+async function handleChatSubmit(event) {
+	event.preventDefault();
+
+	const question = questionInput.value.trim();
+
+	try {
+		const res = await fetch(`${API_URL}/messages`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ question }),
+		});
+
+		if (!res.ok) {
+			throw new Error(`Server error: ${res.status}`);
+		}
+
+		const data = await res.json();
+
+		displayMessage(data.question);
+		displayMessage(data.answer);
+
+		questionInput.value = "";
+	} catch (error) {
+		console.error("Error submitting question:", error);
+	}
+}
+
+clearBtn.addEventListener("click", clearChat);
+
+async function clearChat() {
+
+	try {
+		const res = await fetch(`${API_URL}/messages`, {
+			method: "DELETE",
+		});
+
+		if (!res.ok) {
+			throw new Error(`Server error: ${res.status}`);
+		}
+
+        chatSection.innerHTML=""
+	} catch (error) {
+		console.error("Error submitting question:", error);
+	}
+}
