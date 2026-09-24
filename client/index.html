@@ -23,7 +23,7 @@
       <div class="main-grid">
         <img src="/images/portrait-2.svg" id="portrait" alt="Portrait of Stine Blaabjerg Lock"/>
         <section class="main-section">
-          <% if (!messages || messages.length === 0) { %>
+          
           <section>
             <h1>Spørg mig om alt</h1>
             <p>
@@ -31,20 +31,21 @@
               jeg så godt jeg kan!
             </p>
           </section>
-          <% } %>
+         
 
-          <% if (messages && messages.length > 0) { %>
+        
           <section class="chat-section">
-            <% for (const message of messages) { %>
+      
+            
             <article class="chat-box">
-              <article class="<%= message.type %>">
-                <p><%= message.text %></p>
+              <article class="message.type">">
+                <p></p>
               </article>
-              <p class="timestamp"><%= message.createdAt %></p>
+              <p class="timestamp"></p>
             </article>
-            <% } %>
+
           </section>
-          <% } %>
+  
           <section class="form-section">
             <form method="POST" action="/ask" id="chat-form">
               <label for="question" aria-label="Enter your question here"
@@ -79,9 +80,9 @@
           <h2>Statistik</h2>
           <p>Antal spørgsmål stillet:</p>
           <ul>
-            <% for (const [key, value] of Object.entries(topicStats)) { %>
-            <li><%= key %>: <%= value %></li>
-            <% } %>
+           
+            <li></li>
+       
           </ul>
         </section>
       </div>
