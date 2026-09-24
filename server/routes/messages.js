@@ -2,53 +2,16 @@ import express from "express";
 import { loadMessages, saveMessages } from "../data/messages.js";
 import { loadAnswers } from "../data/answers.js";
 import { findBestAnswer, sanitizeQuestion } from "../data/answerLogic.js";
+import { getAllMessages, createMessage, deleteAllMessages } from "../controllers/messagesControllers.js";
 
 
 const router = express.Router();
 
 
-router.get("/", async (req, res) => {
-	const messages = await loadMessages();
-	res.json(messages);
-});
+router.get("/", getAllMessages);
 
-router.post("/", async (req, res) => {
-	const messages = await loadMessages();
- 	const rawQuestion = req.body.question.trim();
-	const question = sanitizeQuestion(rawQuestion);
-	const answers = await loadAnswers();
+router.post("/", createMessage);
 
-	if (!question) {
-		res.json({ error: "Skriv et spørgsmål, før du sender." });
-		return;
-	}
-
-	const message = {
-		type: "question",
-		text: question,
-		createdAt: new Date().toISOString(),
-	};
-	messages.push(message);
-
-	const result = findBestAnswer(question, answers);
-
-	const answerMessage = {
-		type: "answer",
-		text: result.answer,
-		category: result.category,
-		createdAt: new Date().toISOString(),
-	};
-	messages.push(answerMessage);
-
-	await saveMessages(messages);
-
-	res.json({ question: message, answer: answerMessage });
-});
-
-router.delete("/", async (req, res) => {
-	await saveMessages([]);
-
-	res.send();
-});
+router.delete("/", deleteAllMessages);
 
 export default router;
