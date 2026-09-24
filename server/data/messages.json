@@ -1,1 +1,57 @@
-[]
+[
+  {
+    "type": "question",
+    "text": "Hvad hedder du?",
+    "createdAt": "16.09"
+  },
+  {
+    "type": "answer",
+    "text": "Jeg hedder Stine.",
+    "category": "navn",
+    "createdAt": "16.09"
+  },
+  {
+    "type": "question",
+    "text": "Hvor gammel er du?",
+    "createdAt": "16.09"
+  },
+  {
+    "type": "answer",
+    "text": "Jeg er 26 år gammel.",
+    "category": "alder",
+    "createdAt": "16.09"
+  },
+  {
+    "type": "question",
+    "text": "Hvor bor du?",
+    "createdAt": "16.09"
+  },
+  {
+    "type": "answer",
+    "text": "Jeg bor på Frederiksbjerg i Aarhus.",
+    "category": "bosted",
+    "createdAt": "16.09"
+  },
+  {
+    "type": "question",
+    "text": "Hvor gammel er du?",
+    "createdAt": "16.11"
+  },
+  {
+    "type": "answer",
+    "text": "Jeg er 26 år gammel.",
+    "category": "alder",
+    "createdAt": "16.11"
+  },
+  {
+    "type": "question",
+    "text": "Hvad hedder du?",
+    "createdAt": "16.17"
+  },
+  {
+    "type": "answer",
+    "text": "Jeg hedder Stine.",
+    "category": "navn",
+    "createdAt": "16.17"
+  }
+]
