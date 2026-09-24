@@ -107,6 +107,7 @@ img {
 	grid-column-start: 2;
 	width: 100%;
 	height: 600px;
+    min-height: 0;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -212,7 +213,8 @@ form button {
 .chat-section {
 	width: 100%;
 	height: 400px;
-    overflow-y: scroll;
+    min-height: 0;
+    overflow-y: auto;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
