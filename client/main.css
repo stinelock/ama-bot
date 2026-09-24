@@ -41,6 +41,7 @@ header {
     display: flex;
     flex-direction:row;
 	text-align: center;
+    justify-content: space-between;
 	background-color: rgb(var(--light-blue), 0.5);
 	padding: 20px;
     margin-bottom: 50px;
@@ -105,12 +106,12 @@ img {
 .main-section {
 	grid-column-start: 2;
 	width: 100%;
-	height: 70vh;
-	min-height: 50vh;
+	height: 600px;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: space-between;
+    justify-self: center;
 }
 
 /*--------------------NOTIFICATION CSS---------------------*/
@@ -210,7 +211,6 @@ form button {
 .chat-section {
 	width: 100%;
 	height: 100%;
-	min-height: 50vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
