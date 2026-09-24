@@ -202,6 +202,10 @@ form button {
 }
 
 /*----------------------------------------CHAT CSS-----------------------------------*/
+#intro-section.hidden{
+    display: none;
+}
+
 
 .chat-section {
 	width: 100%;

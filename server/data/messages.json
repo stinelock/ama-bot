@@ -1,13 +1,1 @@
-[
-  {
-    "type": "question",
-    "text": "hvor gammel er du?",
-    "createdAt": "2026-09-24T08:48:19.857Z"
-  },
-  {
-    "type": "answer",
-    "text": "Jeg er 26 år gammel.",
-    "category": "alder",
-    "createdAt": "2026-09-24T08:48:19.857Z"
-  }
-]
+[]

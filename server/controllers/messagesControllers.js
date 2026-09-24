@@ -22,9 +22,13 @@ export async function createMessage(req, res) {
 	const message = {
 		type: "question",
 		text: question,
-		createdAt: new Date().toISOString(),
+		createdAt: new Date().toLocaleString("da-DK", {
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
 	};
 	messages.push(message);
+
 
 	const result = findBestAnswer(question, answers);
 
@@ -32,7 +36,10 @@ export async function createMessage(req, res) {
 		type: "answer",
 		text: result.answer,
 		category: result.category,
-		createdAt: new Date().toISOString(),
+		createdAt: new Date().toLocaleString("da-DK", {
+			hour: "2-digit",
+			minute: "2-digit",
+		}),
 	};
 	messages.push(answerMessage);
 
