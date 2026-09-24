@@ -1,8 +1,11 @@
 import express from "express";
 import fs from "node:fs/promises";
+import messagesRouter from "./routes/messages.js";
 
 const app = express();
 const port = 8000;
+
+app.use("/messages", messagesRouter);
 
 //----------------------MIDDLEWARE----------------------//
 
@@ -19,17 +22,7 @@ const topicStats = {
 };
 
 //------------------------------- FUNKTIONER--------------------------
-async function loadMessages() {
-	const data = await fs.readFile("./data/messages.json", "utf-8");
-	const messages = JSON.parse(data);
 
-	return messages;
-}
-
-async function saveMessages(messages) {
-	const json = JSON.stringify(messages, null, 2);
-	await fs.writeFile("./data/messages.json", json);
-}
 
 async function loadAnswers() {
 	const data = await fs.readFile("./data/answers.json", "utf-8");
@@ -84,50 +77,7 @@ function sanitizeQuestion(input) {
 
 //----------------------REST API ROUTES----------------------//
 
-app.get("/messages", async (req, res) => {
-	const messages = await loadMessages();
 
-	res.json(messages);
-});
-
-app.post("/messages", async (req, res) => {
-	const messages = await loadMessages();
-	const rawQuestion = req.body.question.trim();
-	const question = sanitizeQuestion(rawQuestion);
-	const answers = await loadAnswers();
-
-	if (!question) {
-		res.json({ error: "Skriv et spørgsmål, før du sender." });
-		return;
-	}
-
-	const message = {
-		type: "question",
-		text: question,
-		createdAt: new Date().toISOString(),
-	};
-	messages.push(message);
-
-	const result = findBestAnswer(question, answers);
-
-	const answerMessage = {
-		type: "answer",
-		text: result.answer,
-		category: result.category,
-		createdAt: new Date().toISOString(),
-	};
-	messages.push(answerMessage);
-
-	await saveMessages(messages);
-
-	res.json({ question: message, answer: answerMessage });
-});
-
-app.delete("/messages", async (req, res) => {
-	await saveMessages([]);
-
-	res.send();
-});
 
 app.get("/answers", async (req, res) => {
 	const answers = await loadAnswers();
