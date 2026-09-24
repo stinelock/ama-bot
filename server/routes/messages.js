@@ -1,18 +1,20 @@
 import express from "express";
 import { loadMessages, saveMessages } from "../data/messages.js";
+import { loadAnswers } from "../data/answers.js";
+import { findBestAnswer, sanitizeQuestion } from "../data/answerLogic.js";
 
 
 const router = express.Router();
 
+
 router.get("/", async (req, res) => {
 	const messages = await loadMessages();
-
 	res.json(messages);
 });
 
 router.post("/", async (req, res) => {
 	const messages = await loadMessages();
-	const rawQuestion = req.body.question.trim();
+ 	const rawQuestion = req.body.question.trim();
 	const question = sanitizeQuestion(rawQuestion);
 	const answers = await loadAnswers();
 

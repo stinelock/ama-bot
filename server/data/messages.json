@@ -1,13 +1,24 @@
 [
   {
     "type": "question",
-    "text": "hvad er din livret?",
-    "createdAt": "2026-09-17T10:30:15.806Z"
+    "text": "Hvad hedder du?",
+    "createdAt": "2026-09-24T08:36:41.206Z"
   },
   {
     "type": "answer",
-    "text": "Jeg er ikke sikker på, hvad du mener. Kan du uddybe?",
-    "category": "",
-    "createdAt": "2026-09-17T10:30:15.806Z"
+    "text": "Jeg hedder Stine.",
+    "category": "navn",
+    "createdAt": "2026-09-24T08:36:41.206Z"
+  },
+  {
+    "type": "question",
+    "text": "Hvad hvor gammel du?",
+    "createdAt": "2026-09-24T08:36:58.167Z"
+  },
+  {
+    "type": "answer",
+    "text": "Jeg er 26 år gammel.",
+    "category": "alder",
+    "createdAt": "2026-09-24T08:36:58.167Z"
   }
 ]
