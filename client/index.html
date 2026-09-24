@@ -8,22 +8,22 @@
     <meta name="text-scale" content="scale" />
     <meta name="description" content="Min personlige AMAbot" />
     <meta name="author" content="Stine Blaabjerg Lock" />
-    <link rel="stylesheet" type="text/css" media="screen" href="/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./main.css" />
     <link rel="stylesheet" href="https://use.typekit.net/dub7zvl.css" />
-    <script src="/index.js" defer></script>
+    <script src="./app.js" defer></script>
   </head>
   <body>
     <header>
       <h1>AMAbot</h1>
-          <form method="POST" action="/reset" class="reset-form">
-          <button type="submit" class = "btn-secondary">Reset chat</button>
-        </form>
+     
+          <button type="button" id="clear-chat-btn" class="btn-secondary">Ryd beskeder</button>
+
     </header>
     <main>
       <div class="main-grid">
-        <img src="/images/portrait-2.svg" id="portrait" alt="Portrait of Stine Blaabjerg Lock"/>
+        <!-- <img src="/images/portrait-2.svg" id="portrait" alt="Portrait of Stine Blaabjerg Lock"/> -->
         <section class="main-section">
-          <% if (!messages || messages.length === 0) { %>
+          
           <section>
             <h1>Spørg mig om alt</h1>
             <p>
@@ -31,22 +31,23 @@
               jeg så godt jeg kan!
             </p>
           </section>
-          <% } %>
+         
 
-          <% if (messages && messages.length > 0) { %>
+        
           <section class="chat-section">
-            <% for (const message of messages) { %>
+      
+            
             <article class="chat-box">
-              <article class="<%= message.type %>">
-                <p><%= message.text %></p>
+              <article class="message.type">
+                <p></p>
               </article>
-              <p class="timestamp"><%= message.createdAt %></p>
+              <p class="timestamp"></p>
             </article>
-            <% } %>
+
           </section>
-          <% } %>
+  
           <section class="form-section">
-            <form method="POST" action="/ask">
+            <form id="chat-form">
               <label for="question" aria-label="Enter your question here"
                 >Stil dit spørgsmål her:</label
               >
@@ -66,26 +67,23 @@
                
                 </div>
                 <button id="send-button" type="submit">
-                  <img src="/images/send-btn.svg" />
+                  <!-- <img src="/images/send-btn.svg" /> -->
                 </button>
               </div>
             </form>
-            <% if (error) { %>
-            <p role="alert" aria-live="polite" class="error"><%= error %></p>
-            <% } %>
+
+            <p role="alert" aria-live="polite" class="error" id="error"></p>
          
-      
         </section>  
-      
           </section>
         </section>
         <section class="stats-section">
           <h2>Statistik</h2>
           <p>Antal spørgsmål stillet:</p>
           <ul>
-            <% for (const [key, value] of Object.entries(topicStats)) { %>
-            <li><%= key %>: <%= value %></li>
-            <% } %>
+           
+            <li></li>
+       
           </ul>
         </section>
       </div>
