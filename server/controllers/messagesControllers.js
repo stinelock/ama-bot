@@ -45,7 +45,7 @@ export async function createMessage(req, res) {
 
 	await saveMessages(messages);
 
-	res.json({ question: message, answer: answerMessage });
+	res.status(201).json({ question: message, answer: answerMessage });
 }
 
 
@@ -53,5 +53,5 @@ export async function createMessage(req, res) {
 export async function deleteAllMessages(req, res) {
 	await saveMessages([]);
 
-	res.send();
+	res.status(204).send();
 }

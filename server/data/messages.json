@@ -1,1 +1,24 @@
-[]
+[
+  {
+    "type": "question",
+    "text": "hvad hedder du?",
+    "createdAt": "10.51"
+  },
+  {
+    "type": "answer",
+    "text": "Jeg hedder Stine.",
+    "category": "navn",
+    "createdAt": "10.51"
+  },
+  {
+    "type": "question",
+    "text": "hvad hedder du?",
+    "createdAt": "10.52"
+  },
+  {
+    "type": "answer",
+    "text": "Jeg hedder Stine.",
+    "category": "navn",
+    "createdAt": "10.52"
+  }
+]
