@@ -13,6 +13,13 @@ app.use(cors());
 app.use("/messages", messagesRouter);
 app.use("/answers", answersRouter);
 
+app.use((req, res) => {
+	res.status(404).json({ error: "Kunne ikke finde efterspurgte sti." });
+});
+app.use((error, req, res, next) => {
+	console.error(error);
+	res.status(500).json({ error: error.message });
+});
 
 //----------------------OPSTART AF SERVER----------------------//
 
