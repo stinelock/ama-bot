@@ -30,11 +30,47 @@ async function getMessages() {
 		}
 	} catch (error) {
 		console.log("fejl i fetch af data");
-        showError("der er en fejl")
+		showError("der er en fejl");
 	}
 }
 
 getMessages();
+
+//-----------------------SEND BESKEDER------------------
+chatForm.addEventListener("submit", handleChatSubmit);
+
+async function handleChatSubmit(event) {
+	event.preventDefault();
+
+	const question = questionInput.value.trim();
+
+	errorMessage.textContent = "";
+
+	try {
+		const res = await fetch(`${API_URL}/messages`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ question }),
+		});
+
+    		const data = await res.json();
+
+		if (!res.ok) {
+			throw new Error(data.error || `Server error: ${res.status}`);
+		}
+
+		introSection.classList.add("hidden");
+		displayMessage(data.question);
+		displayMessage(data.answer);
+
+		questionInput.value = "";
+	} catch (error) {
+		console.error(error);
+		showError(error.message);
+	}
+}
 
 function displayMessage(message) {
 	const html = `<article class="chat-box">
@@ -46,47 +82,8 @@ function displayMessage(message) {
 
 	chatSection.insertAdjacentHTML("beforeend", html);
 
-    chatSection.scrollTop = chatSection.scrollHeight;
+	chatSection.scrollTop = chatSection.scrollHeight;
 }
-
-
-//-----------------------SEND BESKEDER------------------
-chatForm.addEventListener("submit", handleChatSubmit);
-
-async function handleChatSubmit(event) {
-	event.preventDefault();
-
-	const question = questionInput.value.trim();
-
-        errorMessage.textContent = "";
-
-	try {
-		const res = await fetch(`${API_URL}/messages`, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({ question }),
-		});
-
-		if (!res.ok) {
-            introSection.classList.remove("hidden");
-			throw new Error(`Server error: ${res.status}`);
-		}
-
-		const data = await res.json();
-
-        introSection.classList.add("hidden");
-		displayMessage(data.question);
-		displayMessage(data.answer);
-
-		questionInput.value = "";
-	} catch (error) {
-		console.error("Error submitting question:", error);
-            showError("Husk at skriv et spørgsmål før du sender");
-	}
-}
-
 
 // -----------------------RYD BESKEDER------------------
 clearBtn.addEventListener("click", clearChat);
@@ -105,10 +102,10 @@ async function clearChat() {
 		introSection.classList.remove("hidden");
 	} catch (error) {
 		console.error("Error submitting question:", error);
-            showError("der er en fejl");
+		showError("der er en fejl");
 	}
 }
 
 function showError(message) {
-    errorMessage.textContent = message;
+	errorMessage.textContent = message;
 }
