@@ -1,10 +1,13 @@
 import fs from "node:fs/promises";
 
 export async function loadMessages() {
-	const data = await fs.readFile("./data/messages.json", "utf-8");
-	const messages = JSON.parse(data);
-
-	return messages;
+	try {
+		const data = await fs.readFile("./data/messages.json", "utf-8");
+		const messages = JSON.parse(data);
+		return messages;
+	} catch (error) {
+        throw new Error("Data for beskeder er findes ikke eller er ugyldig.");
+    }
 }
 
 export async function saveMessages(messages) {

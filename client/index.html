@@ -49,11 +49,16 @@
                   id="question"
                   placeholder="Hvad vil du gerne vide?"
                   maxlength="250"
+                  minlength="1"
                 />
+<div class="error-container">
+   <p role="alert" aria-live="polite" class="error" id="error"></p>
                     <div class="character-count-container">
                         <span id="character-count-message"></span>
                         <span id="character-count">0</span><span id="character-limit">/250</span>
                     </div>
+</div>
+                
                
                 </div>
                 <button id="send-button" type="submit">
@@ -62,7 +67,7 @@
               </div>
             </form>
 
-            <p role="alert" aria-live="polite" class="error" id="error"></p>
+         
          
         </section>  
         </section>

@@ -4,6 +4,7 @@ const introSection = document.getElementById("intro-section");
 const questionInput = document.getElementById("question");
 const sendBtn = document.getElementById("send-button");
 const clearBtn = document.getElementById("clear-chat-btn");
+const errorMessage = document.getElementById("error");
 
 const API_URL = "http://localhost:8000";
 
@@ -29,6 +30,7 @@ async function getMessages() {
 		}
 	} catch (error) {
 		console.log("fejl i fetch af data");
+        showError("der er en fejl")
 	}
 }
 
@@ -76,6 +78,7 @@ async function handleChatSubmit(event) {
 		questionInput.value = "";
 	} catch (error) {
 		console.error("Error submitting question:", error);
+            showError("Husk at skriv et spørgsmål før du sender");
 	}
 }
 
@@ -97,5 +100,10 @@ async function clearChat() {
 		introSection.classList.remove("hidden");
 	} catch (error) {
 		console.error("Error submitting question:", error);
+            showError("der er en fejl");
 	}
+}
+
+function showError(message) {
+    errorMessage.textContent = message;
 }

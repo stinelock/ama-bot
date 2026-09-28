@@ -7,7 +7,6 @@ export async function getAllMessages(req, res) {
 	res.json(messages);
 }
 
-
 export async function createMessage(req, res) {
 	const messages = await loadMessages();
 	const rawQuestion = req.body.question.trim();
@@ -21,20 +20,19 @@ export async function createMessage(req, res) {
 
 	const message = {
 		type: "question",
-		text: question,
+		text: escapeHtml(question),
 		createdAt: new Date().toLocaleString("da-DK", {
-        hour: "2-digit",
-        minute: "2-digit",
-      }),
+			hour: "2-digit",
+			minute: "2-digit",
+		}),
 	};
 	messages.push(message);
-
 
 	const result = findBestAnswer(question, answers);
 
 	const answerMessage = {
 		type: "answer",
-		text: result.answer,
+		text: escapeHtml(result.answer),
 		category: result.category,
 		createdAt: new Date().toLocaleString("da-DK", {
 			hour: "2-digit",
@@ -45,13 +43,20 @@ export async function createMessage(req, res) {
 
 	await saveMessages(messages);
 
-	res.json({ question: message, answer: answerMessage });
+	res.status(201).json({ question: message, answer: answerMessage });
 }
 
-
+function escapeHtml(text) {
+	return text
+		.replaceAll("&", "&amp;")
+		.replaceAll("<", "&lt;")
+		.replaceAll(">", "&gt;")
+		.replaceAll('"', "&quot;")
+		.replaceAll("'", "&#039;");
+}
 
 export async function deleteAllMessages(req, res) {
 	await saveMessages([]);
 
-	res.send();
+	res.status(204).send();
 }

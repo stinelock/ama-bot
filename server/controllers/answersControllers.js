@@ -13,6 +13,11 @@ export async function getAnswerByCategory(req, res) {
 		(answer) => answer.category === req.params.category,
 	);
 
+    if (!answerRule) {
+        res.status(404).json({ error: "Der findes ikke et svar med denne kategori" });
+        return;
+    }
+
 	res.json(answerRule);
 }
 
@@ -25,10 +30,14 @@ export async function createAnswer(req, res) {
 		answer: req.body.answer,
 	};
 
+    if (!newAnswerRule.category || !newAnswerRule.keywords || !newAnswerRule.answer) {
+		return res.status(400).json({ error: "En svarregel skal have en kategori, nøgleord og et svar" });
+	}
+
 	answers.push(newAnswerRule);
 	await saveAnswers(answers);
 
-	res.json(newAnswerRule);
+	res.status(201).json(newAnswerRule);
 }
 
 export async function updateAnswer(req, res) {
@@ -37,6 +46,24 @@ export async function updateAnswer(req, res) {
 	const answerRule = answers.find(
 		(answer) => answer.category === req.params.category,
 	);
+
+    if (!answerRule) {
+        res.status(404).json({ error: "Der findes ikke et svar med denne kategori" });
+        return;
+    }
+
+     if (
+			!req.body.category ||
+			!req.body.keywords ||
+			!req.body.answer
+		) {
+			return res
+				.status(400)
+				.json({
+					error: "En svarregel skal have en kategori, nøgleord og et svar",
+				});
+		}
+    
 
 	answerRule.keywords = req.body.keywords;
 	answerRule.answer = req.body.answer;
@@ -48,10 +75,19 @@ export async function updateAnswer(req, res) {
 export async function deleteAnswer(req, res) {
 	const answers = await loadAnswers();
 
+    const answerRule = answers.find(
+        (answer) => answer.category === req.params.category,
+    );
+
+    if (!answerRule) {
+        res.status(404).json({ error: "Der findes ikke et svar med denne kategori" });
+        return;
+    }
+
 	const updatedAnswers = answers.filter(
 		(answer) => answer.category !== req.params.category,
 	);
 
 	await saveAnswers(updatedAnswers);
-	res.send();
+	res.status(204).send();
 }
