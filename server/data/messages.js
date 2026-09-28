@@ -6,7 +6,7 @@ export async function loadMessages() {
 		const messages = JSON.parse(data);
 		return messages;
 	} catch (error) {
-        throw new Error("Data for beskeder er findes ikke eller er ugyldig.");
+        throw new Error("Kunne ikke hente svar. Prøv igen senere");
     }
 }
 
