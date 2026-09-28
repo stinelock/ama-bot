@@ -126,7 +126,14 @@ img {
 .error {
     color: var(--alert-color);
     font-size: 0.8rem;
-    margin-top: 5px;
+
+}
+
+.error-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /*--------------------FORM--------------------------*/
