@@ -201,6 +201,7 @@ form button {
 }
 
 .btn-secondary {
+    font-family: "poppins", sans-serif;
 	align-self: end;
 	border: none;
 	height: 50px;

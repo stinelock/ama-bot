@@ -15,8 +15,6 @@ export function findBestAnswer(question, answers) {
 	for (const answerGroup of answers) {
 		const score = countMatches(answerGroup.keywords, normalizedQuestion);
 
-        console.log(`Score for answer "${answerGroup.category}": ${score}`);
-
 		if (score === bestScore && score > 0) {
 			bestAnswer += ` ${answerGroup.answer}`;
 		}
