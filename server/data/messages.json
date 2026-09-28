@@ -1,24 +1,13 @@
 [
   {
     "type": "question",
-    "text": "hvad hedder du?",
-    "createdAt": "10.51"
+    "text": "Hvad hedder du?",
+    "createdAt": "11.15"
   },
   {
     "type": "answer",
     "text": "Jeg hedder Stine.",
     "category": "navn",
-    "createdAt": "10.51"
-  },
-  {
-    "type": "question",
-    "text": "hvad hedder du?",
-    "createdAt": "10.52"
-  },
-  {
-    "type": "answer",
-    "text": "Jeg hedder Stine.",
-    "category": "navn",
-    "createdAt": "10.52"
+    "createdAt": "11.15"
   }
 ]
