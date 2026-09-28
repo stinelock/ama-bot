@@ -58,6 +58,8 @@ async function handleChatSubmit(event) {
 
 	const question = questionInput.value.trim();
 
+        errorMessage.textContent = "";
+
 	try {
 		const res = await fetch(`${API_URL}/messages`, {
 			method: "POST",
@@ -68,6 +70,7 @@ async function handleChatSubmit(event) {
 		});
 
 		if (!res.ok) {
+            introSection.classList.remove("hidden");
 			throw new Error(`Server error: ${res.status}`);
 		}
 
