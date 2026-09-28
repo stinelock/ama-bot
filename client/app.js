@@ -42,6 +42,7 @@ chatForm.addEventListener("submit", handleChatSubmit);
 async function handleChatSubmit(event) {
 	event.preventDefault();
 
+	const inputValueLength = questionInput.value.trim().length;
 	const question = questionInput.value.trim();
 
 	errorMessage.textContent = "";
@@ -66,6 +67,7 @@ async function handleChatSubmit(event) {
 		displayMessage(data.answer);
 
 		questionInput.value = "";
+		questionInput.dispatchEvent(new Event("input", { bubbles: true }));
 	} catch (error) {
 		console.error(error);
 
@@ -101,8 +103,6 @@ async function clearChat() {
 		const res = await fetch(`${API_URL}/messages`, {
 			method: "DELETE",
 		});
-
-		const data = await res.json();
 
 		if (!res.ok) {
 			throw new Error("Kunne ikke rydde chatten. Prøv igen senere.");
