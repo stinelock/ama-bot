@@ -24,7 +24,7 @@
       "hjem",
       "by"
     ],
-    "answer": "Jeg bor på Frederiksbjerg i Aarhus"
+    "answer": "Jeg bor på Frederiksbjerg i Aarhus."
   },
   {
     "category": "hobbyer",
@@ -34,7 +34,7 @@
       "fritid",
       "kan lide"
     ],
-    "answer": "I min fritid kan jeg godt lide at tegne, strikke, gå til gymnastik og være sammen med min venner."
+    "answer": "I min fritid kan jeg godt lide at tegne, strikke, gå til gymnastik og være sammen med mine venner."
   },
   {
     "category": "sport",
@@ -44,5 +44,61 @@
       "går du til",
       "sport"
     ],
-    "answer": "I min fritid går jeg til gymnastik."}
+    "answer": "I min fritid går jeg til gymnastik."
+  },
+  {
+    "category": "livret",
+    "keywords": [
+      "livret",
+      "spise",
+      "mad"
+    ],
+    "answer": "Jeg har ikke en bestemt livret, men jeg spiser ofte pastaretter eller wok."
+  },
+  {
+    "category": "gymnastik",
+    "keywords": [
+      "gymnastik",
+      "hold",
+      "går du til",
+      "hvor længe"
+    ],
+    "answer": "Jeg har gået til gymnastik siden jeg var lille. i Øjeblikket går jeg på to hold, så jeg er af sted to gange i ugen."
+  },
+  {
+    "category": "familie",
+    "keywords": [
+      "familie",
+      "forældre",
+      "søskende",
+      "brødre",
+      "søstre"
+    ],
+    "answer": "Min familie består af min mor, min far og mine to brødre."
+  },
+  {
+    "category": "strik",
+    "keywords": [
+      "strik",
+      "længe",
+      "strikkepinde",
+      "garn"
+    ],
+    "answer": "Jeg har strikket siden 2020 (corona, du ved). Jeg strikker som regel trøjer eller toppe, men noglegange også huer og vanter."
+  },
+  {
+    "category": "tegning",
+    "keywords": [
+      "kreativ",
+      "tegne",
+      "male",
+      "tegning",
+      "kunst",
+      "akvarel",
+      "farveblyant",
+      "maling",
+      "akryl"
+    ],
+    "answer": "Jeg har altid godt kunne lide at tegne. Jeg gør det desværre ikke så ofte, men jeg elsker det, når jeg finder tiden til det. Jeg bruger både akryl, akvarel, blyanter, oliekridt og kuglepenne. Jeg kan allerbedst lide at tegne mennesker."
+  }
 ]
