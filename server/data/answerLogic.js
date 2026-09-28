@@ -9,19 +9,16 @@ export function findBestAnswer(question, answers) {
 	const normalizedQuestion = question.toLowerCase();
 
 	let bestScore = 0;
-	let bestAnswer = "Jeg er ikke sikker på, hvad du mener. Kan du uddybe?";
+	let bestAnswer = "Jeg er ikke sikker på, hvad du mener. Prøv at omformulere dit spørgsmål.";
 	let bestCategory = "";
 
 	for (const answerGroup of answers) {
 		const score = countMatches(answerGroup.keywords, normalizedQuestion);
 
-		if (score === bestScore && score > 0) {
-			if (typeof bestCategory === "string") {
-				bestCategory = [bestCategory];
-			}
+        console.log(`Score for answer "${answerGroup.category}": ${score}`);
 
+		if (score === bestScore && score > 0) {
 			bestAnswer += ` ${answerGroup.answer}`;
-			bestCategory.push(answerGroup.category);
 		}
 		if (score > bestScore) {
 			bestScore = score;
@@ -29,6 +26,7 @@ export function findBestAnswer(question, answers) {
 			bestCategory = answerGroup.category;
 		}
 	}
+
 
 	return { answer: bestAnswer, category: bestCategory };
 }
