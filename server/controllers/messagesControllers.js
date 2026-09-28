@@ -14,7 +14,7 @@ export async function createMessage(req, res) {
 	const answers = await loadAnswers();
 
 	if (!question) {
-		res.json({ error: "Skriv et spørgsmål, før du sender." });
+		res.status(400).json({ error: "Husk at skrive et spørgsmål, før du sender." });
 		return;
 	}
 

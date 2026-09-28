@@ -36,11 +36,3 @@ export function findBestAnswer(question, answers) {
 export function sanitizeQuestion(input) {
 	return input.replace(/[\u0000-\u001F\u007F]/g, ""); //Fjerner kontroltegn og usynlige tegn fra inputtet
 }
-
-const topicStats = {
-	navn: 0,
-	alder: 0,
-	bosted: 0,
-	hobbyer: 0,
-	sport: 0,
-};

@@ -128,7 +128,16 @@ img {
 .error {
 	color: var(--alert-color);
 	font-size: 0.8rem;
-	margin-top: 5px;
+    margin: 0;
+}
+
+.error-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 5px;
 }
 
 /*--------------------FORM--------------------------*/

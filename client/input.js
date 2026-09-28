@@ -14,20 +14,15 @@ function handleInputChange(event) {
 
 	if (inputValueLength > 0) {
 		submitBtn.classList.add("active");
-		submitBtn.disabled = false;
 	} else {
 		submitBtn.classList.remove("active");
-		submitBtn.disabled = true;
 	}
 
 	if (inputValueLength === 250) {
 		characterCounter.classList.add("alert");
 		characterLimit.classList.add("alert");
-		characterCountMessage.textContent =
-			"Du har nået maksimum antal karakterer.";
 	} else {
 		characterCounter.classList.remove("alert");
 		characterLimit.classList.remove("alert");
-		characterCountMessage.textContent = "";
 	}
 }

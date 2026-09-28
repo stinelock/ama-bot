@@ -6,7 +6,7 @@ export async function loadAnswers() {
 		const answers = JSON.parse(data);
 		return answers;
 	} catch (error) {
-		throw new Error("Data for svar er findes ikke eller er ugyldig.");
+		throw new Error("Kunne ikke hente svar. Prøv igen senere");
 	}
 }
 
