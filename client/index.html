@@ -1,78 +1,92 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="da">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>AMAbot</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="text-scale" content="scale" />
-    <meta name="description" content="Min personlige AMAbot" />
-    <meta name="author" content="Stine Blaabjerg Lock" />
-    <link rel="stylesheet" type="text/css" media="screen" href="./main.css" />
-    <link rel="stylesheet" href="https://use.typekit.net/dub7zvl.css" />
-    <script src="./app.js" defer></script>
-      <script src="./input.js" defer></script>
-  </head>
-  <body>
-    <header>
-      <h1>AMAbot</h1>
-     
-          <button type="button" id="clear-chat-btn" class="btn-secondary">Ryd beskeder</button>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>AMAbot</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="text-scale" content="scale" />
+		<meta name="description" content="Min personlige AMAbot" />
+		<meta name="author" content="Stine Blaabjerg Lock" />
+		<link
+			rel="stylesheet"
+			type="text/css"
+			media="screen"
+			href="./main.css"
+		/>
+		<link rel="stylesheet" href="https://use.typekit.net/dub7zvl.css" />
+		<script src="./app.js" defer></script>
+		<script src="./input.js" defer></script>
+	</head>
+	<body>
+		<header>
+			<h1>AMAbot</h1>
 
-    </header>
-    <main>
-      <div class="main-grid">
-        <img src="./images/portrait-2.svg" id="portrait" alt="Portrait of Stine Blaabjerg Lock"/>
-        <section class="main-section">
-          
-          <section id="intro-section">
-            <h1>Spørg mig om alt</h1>
-            <p>
-              Her kan du lære mere om mig. Bare stil et spørgsmål og så svarer
-              jeg så godt jeg kan!
-            </p>
-          </section>
+			<button type="button" id="clear-chat-btn" class="btn-secondary">
+				Ryd beskeder
+			</button>
+		</header>
+		<main>
+			<div class="main-grid">
+				<img
+					src="./images/portrait-2.svg"
+					id="portrait"
+					alt="Portrait of Stine Blaabjerg Lock"
+				/>
+				<section class="main-section">
+					<section id="intro-section">
+						<h1>Spørg mig om alt</h1>
+						<p>
+							Her kan du lære mere om mig. Bare stil et spørgsmål
+							og så svarer jeg så godt jeg kan!
+						</p>
+					</section>
 
-          <section class="chat-section">
-          </section>
-  
-          <section class="form-section">
-            <form id="chat-form">
-              <label for="question" aria-label="Enter your question here"
-                >Stil dit spørgsmål her:</label
-              >
-              <div class="flex-row">
-                <div class="input-container">
-                <input
-                  type="text"
-                  name="question"
-                  id="question"
-                  placeholder="Hvad vil du gerne vide?"
-                  maxlength="250"
-                  minlength="1"
-                />
-<div class="error-container">
-   <p role="alert" aria-live="polite" class="error" id="error"></p>
-                    <div class="character-count-container">
-                        <span id="character-count-message"></span>
-                        <span id="character-count">0</span><span id="character-limit">/250</span>
-                    </div>
-</div>
-                
-               
-                </div>
-                <button id="send-button" type="submit">
-                  <img src="./images/send-btn.svg" />
-                </button>
-              </div>
-            </form>
+					<section class="chat-section"></section>
 
-         
-         
-        </section>  
-        </section>
-       
-      </div>
-    </main>
-  </body>
+					<section class="form-section">
+						<form id="chat-form">
+							<label
+								for="question"
+								aria-label="Enter your question here"
+								>Stil dit spørgsmål her:</label
+							>
+							<div class="flex-row">
+								<div class="input-container">
+									<input
+										type="text"
+										name="question"
+										id="question"
+										placeholder="Hvad vil du gerne vide?"
+										maxlength="250"
+										minlength="1"
+									/>
+									<div class="error-container">
+										<p
+											role="alert"
+											aria-live="polite"
+											class="error"
+											id="error"
+										></p>
+										<div class="character-count-container">
+											<span
+												id="character-count-message"
+											></span>
+											<span id="character-count">0</span
+											><span id="character-limit"
+												>/250</span
+											>
+										</div>
+									</div>
+								</div>
+								<button id="send-button" type="submit">
+									<img src="./images/send-btn.svg" />
+								</button>
+							</div>
+						</form>
+					</section>
+				</section>
+			</div>
+		</main>
+	</body>
 </html>
