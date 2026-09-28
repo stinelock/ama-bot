@@ -55,7 +55,7 @@ async function handleChatSubmit(event) {
 			body: JSON.stringify({ question }),
 		});
 
-    		const data = await res.json();
+		const data = await res.json();
 
 		if (!res.ok) {
 			throw new Error(data.error || `Server error: ${res.status}`);
@@ -68,6 +68,14 @@ async function handleChatSubmit(event) {
 		questionInput.value = "";
 	} catch (error) {
 		console.error(error);
+
+		if (error instanceof TypeError) {
+			showError(
+				"Serveren er ikke tilgængelig lige nu. Prøv igen senere.",
+			);
+			return;
+		}
+
 		showError(error.message);
 	}
 }
@@ -94,15 +102,17 @@ async function clearChat() {
 			method: "DELETE",
 		});
 
+		const data = await res.json();
+
 		if (!res.ok) {
-			throw new Error(`Server error: ${res.status}`);
+			throw new Error("Kunne ikke rydde chatten. Prøv igen senere.");
 		}
 
 		chatSection.innerHTML = "";
 		introSection.classList.remove("hidden");
 	} catch (error) {
 		console.error("Error submitting question:", error);
-		showError("der er en fejl");
+		showError(error.message);
 	}
 }
 
