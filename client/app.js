@@ -45,6 +45,8 @@ function displayMessage(message) {
                 </article>`;
 
 	chatSection.insertAdjacentHTML("beforeend", html);
+
+    chatSection.scrollTop = chatSection.scrollHeight;
 }
 
 
