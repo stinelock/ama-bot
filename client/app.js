@@ -8,6 +8,8 @@ const errorMessage = document.getElementById("error");
 
 const API_URL = "http://localhost:8000";
 
+//-----------------------HENT BESKEDER------------------
+
 async function getMessages() {
 	try {
 		const res = await fetch(`${API_URL}/messages`);
@@ -45,6 +47,8 @@ function displayMessage(message) {
 	chatSection.insertAdjacentHTML("beforeend", html);
 }
 
+
+//-----------------------SEND BESKEDER------------------
 chatForm.addEventListener("submit", handleChatSubmit);
 
 async function handleChatSubmit(event) {
@@ -78,6 +82,8 @@ async function handleChatSubmit(event) {
 	}
 }
 
+
+// -----------------------RYD BESKEDER------------------
 clearBtn.addEventListener("click", clearChat);
 
 async function clearChat() {

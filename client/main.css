@@ -9,7 +9,7 @@
 	--light-grey-color: #eaeaea;
 	--cta-color: #a8f00c;
 	--light-blue: 184, 214, 255;
-    --dark-blue:#383495;
+	--dark-blue: #383495;
 	--alert-color: #ff0000;
 	--inactive-color: #c5c5c5;
 
@@ -38,12 +38,13 @@ main {
 }
 
 header {
-    display: flex;
-    flex-direction:row;
+	display: flex;
+	flex-direction: row;
 	text-align: center;
+	justify-content: space-between;
 	background-color: rgb(var(--light-blue), 0.5);
 	padding: 20px;
-    margin-bottom: 50px;
+	margin-bottom: 50px;
 }
 
 h1 {
@@ -99,18 +100,19 @@ img {
 	max-height: 100vh;
 	width: 100%;
 	gap: 70px;
-	padding: 50px 50px 50px 0;
+	padding: 50px 50px 0 0;
 }
 
 .main-section {
 	grid-column-start: 2;
 	width: 100%;
-	height: 70vh;
-	min-height: 50vh;
+	height: 600px;
+	min-height: 0;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: space-between;
+	justify-self: center;
 }
 
 /*--------------------NOTIFICATION CSS---------------------*/
@@ -124,16 +126,9 @@ img {
 }
 
 .error {
-    color: var(--alert-color);
-    font-size: 0.8rem;
-
-}
-
-.error-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+	color: var(--alert-color);
+	font-size: 0.8rem;
+	margin-top: 5px;
 }
 
 /*--------------------FORM--------------------------*/
@@ -149,20 +144,22 @@ form {
 }
 
 .reset-form {
-    margin: 0;
-    width: 100%;
+	margin: 0;
+	width: 100%;
 }
 
-.reset-form button {
-    background-color: var(--dark-blue);
-    color: var(--primary-color);
-    transition: all 0.3s ease-in-out;
+#clear-chat-btn {
+	border: 2px solid var(--dark-blue);
+	background-color: transparent;
+	color: var(--secondary-color);
+	width: 150px;
 }
 
-.reset-form button:hover {
-    background-color: transparent;
-    border: 2px solid var(--dark-blue);
-    color: var(--secondary-color);
+#clear-chat-btn:hover {
+	background-color: var(--dark-blue);
+	color: var(--primary-color);
+	transition: all 0.3s ease-in-out;
+	width: 150px;
 }
 
 input {
@@ -176,12 +173,12 @@ input {
 }
 
 .input-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: space-between;
-    width: 100%;
-    gap: 5px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: space-between;
+	width: 100%;
+	gap: 5px;
 }
 
 form button {
@@ -195,13 +192,13 @@ form button {
 }
 
 .btn-secondary {
-    align-self: end;
-    border: none;
-    height: 50px;
-    width: 125px;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: var(--border-radius);
+	align-self: end;
+	border: none;
+	height: 50px;
+	width: 125px;
+	padding: 10px 20px;
+	cursor: pointer;
+	border-radius: var(--border-radius);
 }
 
 .form-section {
@@ -209,26 +206,27 @@ form button {
 }
 
 /*----------------------------------------CHAT CSS-----------------------------------*/
-#intro-section.hidden{
-    display: none;
+#intro-section.hidden {
+	display: none;
 }
-
 
 .chat-section {
 	width: 100%;
-	height: 100%;
-	min-height: 50vh;
+	height: 400px;
+	min-height: 0;
+	overflow-y: auto;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: flex-end;
+	justify-content: flex-start;
+    padding-right: 20px;
 }
 
 .chat-box {
 	display: flex;
 	flex-direction: column;
+	flex: 0 0 auto;
 	height: auto;
-	margin-bottom: 20px;
 	width: 100%;
 }
 
@@ -260,21 +258,21 @@ form button {
 }
 
 .character-count-container {
-    display: flex;
-    align-items: center;
-    justify-self: flex-end;
-    margin-right: 10px;
+	display: flex;
+	align-items: center;
+	justify-self: flex-end;
+	margin-right: 10px;
 }
 
 .character-count-container span {
-    font-size: 0.8rem;
-    margin-left: 5px;
+	font-size: 0.8rem;
+	margin-left: 5px;
 }
 
 #character-count-message {
-    color: var(--alert-color);
-    font-size: 0.8rem;
-    margin-left: 10px;
+	color: var(--alert-color);
+	font-size: 0.8rem;
+	margin-left: 10px;
 }
 
 /*-------------------------STATS SECTION----------------------------*/
@@ -289,4 +287,8 @@ form button {
 	justify-content: flex-start;
 	border-radius: var(--border-radius);
 	background-color: rgb(var(--light-blue), 0.5);
+}
+
+#portrait {
+	margin-bottom: 50px;
 }

@@ -30,6 +30,4 @@ function handleInputChange(event) {
 		characterLimit.classList.remove("alert");
 		characterCountMessage.textContent = "";
 	}
-
-	console.log("Input ændret:", inputValueLength);
 }
