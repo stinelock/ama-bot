@@ -9,7 +9,7 @@
 	--light-grey-color: #eaeaea;
 	--cta-color: #a8f00c;
 	--light-blue: 184, 214, 255;
-	--dark-blue: #383495;
+	--dark-blue: #451B80;
 	--alert-color: #ff0000;
 	--inactive-color: #c5c5c5;
 
@@ -248,6 +248,7 @@ form button {
 
 .question {
 	background-color: var(--light-green-color);
+    color: var(--primary-color);
 	padding: 0 20px;
 	width: fit-content;
 	height: auto;
@@ -256,7 +257,7 @@ form button {
 
 .answer {
 	align-self: flex-start;
-	background-color: var(--light-grey-color);
+	background-color: rgb(var(--light-blue), 0.5);
 	padding: 0 20px;
 	width: auto;
 	height: auto;
